@@ -13,10 +13,9 @@
                 <ul class="space-y-2">
                     <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="#">Dashboard</a>
                     </li>
-                    <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="#">Profile</a>
+                    <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Projects</a>
                     </li>
-                    <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="#">Upload
-                            Videos</a></li>
+                    <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="#">Upload Videos</a></li>
                     <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="#">Show Stats</a>
                     </li>
                     <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="#">Users</a></li>
@@ -29,15 +28,15 @@
 
                 <div class="grid grid-cols-3 gap-8 mt-4">
                     <div class="bg-blue-400 p-2 rounded-lg text-center shadow-sm">
-                        <h3 class="text-gray-800 text-2xl">your stats</h3>
+                        <h3 class="text-gray-800 text-2xl">Total Projects</h3>
                         <h2 class="text-blue-800 text-3xl font-bold">34</h2>
                     </div>
                     <div class="bg-green-400 p-2 rounded-lg text-center shadow-sm">
-                        <h3 class="text-gray-800 text-2xl">your videos</h3>
+                        <h3 class="text-gray-800 text-2xl">Total Videos</h3>
                         <h2 class="text-green-800 text-3xl font-bold">12</h2>
                     </div>
                     <div class="bg-red-400 p-2 rounded-lg text-center shadow-sm">
-                        <h3 class="text-gray-800 text-2xl">your shares</h3>
+                        <h3 class="text-gray-800 text-2xl">Total Comments</h3>
                         <h2 class="text-red-800 text-3xl font-bold">8</h2>
                     </div>
                 </div>
