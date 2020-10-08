@@ -113,15 +113,15 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
 <script>
 $(document).ready(function() {
-    
-    var table = $('#project_table').DataTable( {
+    var table = $('#datatable').DataTable( {
             responsive: true,
             "lengthMenu": [
                 [10, 25, 50, -1],
                 [10, 25, 50, "All"]
             ]
         } )
-        .columns.adjust();
+        .columns.adjust()
+		.responsive.recalc();
 } );
 </script>
 </body>

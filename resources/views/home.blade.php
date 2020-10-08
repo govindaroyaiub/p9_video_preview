@@ -41,12 +41,12 @@
                     <?php $i=1; ?>
                     <tbody>
                     @foreach($user_list as $user)
-                    <tr>
-                        <td class="border px-4 py-2">{{$i++}}</td>
-                        <td class="border px-4 py-2">{{ $user->name }}</td>
-                        <td class="border px-4 py-2">{{ $user->email }}</td>
-                        <td class="border px-4 py-2">Admin</td>
-                    </tr>
+                        <tr>
+                            <td class="border px-4 py-2">{{$i++}}</td>
+                            <td class="border px-4 py-2">{{ $user->name }}</td>
+                            <td class="border px-4 py-2">{{ $user->email }}</td>
+                            <td class="border px-4 py-2">Admin</td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

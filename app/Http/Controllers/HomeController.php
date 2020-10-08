@@ -54,6 +54,7 @@ class HomeController extends Controller
 
     public function sizes()
     {
-        return view('sizes');
+        $size_list = Sizes::orderBy('width', 'ASC')->get();
+        return view('sizes', compact('size_list'));
     }
 }

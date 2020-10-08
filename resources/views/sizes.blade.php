@@ -44,31 +44,25 @@
                 </div>
             </div>
             <br>
-            <table id="project_table" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+            <table id="datatable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
                     <tr>
                         <th data-priority="1">No</th>
                         <th data-priority="2">Resolution</th>
                         <th data-priority="3">Actions</th>
-
+                    </tr>
                 </thead>
+                <?php $i=1; ?>
                 <tbody>
+                @foreach( $size_list as $size )
                     <tr>
-                        <td>Dirk</td>
-                        <td>Coffee Manager</td>
-                        <td>Ljubljana</td>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $size->width }}x{{ $size->height }}</td>
+                        <td>Dummy Text</td>
                     </tr>
-                    <tr>
-                        <td>USC</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                    </tr>
+                @endforeach
                 </tbody>
-
             </table>
-
-
-
         </div>
     </div>
 </div>
