@@ -74,7 +74,7 @@
 <nav class="bg-white">
     <div class="relative container mx-auto px-4 py-3 flex justify-between items-center">
         <a class="text-xl font-semibold" href="{{ url('/') }}">
-            P9 Video Preview
+            <img src="https://www.planetnine.com/wp-content/uploads/2020/06/cropped-logo_def.png" style="max-width:20.6%;">
         </a>
 
         <ul class="flex space-x-4">
