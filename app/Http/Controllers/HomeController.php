@@ -30,4 +30,9 @@ class HomeController extends Controller
     {
         return view('project');
     }
+
+    public function project_add()
+    {
+        dd('project_add');
+    }
 }
