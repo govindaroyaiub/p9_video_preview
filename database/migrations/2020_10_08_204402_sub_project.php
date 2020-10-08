@@ -17,16 +17,12 @@ class SubProject extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('project_id');
-            $table->string('file_path');
-            $table->string('logo');
-            $table->string('width');
-            $table->string('height');
+            $table->string('side_id');
             $table->string('codec');
             $table->string('aspect_ratio');
             $table->string('fps');
             $table->string('size');
-            $table->integer('is_logo');
-            $table->integer('is_footer');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\MainProject;
+use App\SubProject;
+use App\Comments;
+use App\Sizes;
 
 class HomeController extends Controller
 {
@@ -46,5 +50,10 @@ class HomeController extends Controller
     public function client_add()
     {
         dd('client_add');
+    }
+
+    public function sizes()
+    {
+        return view('sizes');
     }
 }

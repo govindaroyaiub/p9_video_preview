@@ -18,6 +18,7 @@ class MainProject extends Migration
             $table->string('name');
             $table->string('client_name');
             $table->string('logo');
+            $table->string('color');
             $table->integer('is_logo');
             $table->integer('is_footer');
             $table->timestamps();

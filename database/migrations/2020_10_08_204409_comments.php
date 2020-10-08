@@ -13,7 +13,12 @@ class Comments extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('project_id');
+            $table->text('comment');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Comments extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('comments');
     }
 }

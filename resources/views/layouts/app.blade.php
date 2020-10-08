@@ -110,6 +110,7 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
 <script>
 $(document).ready(function() {
     
