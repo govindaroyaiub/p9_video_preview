@@ -37,4 +37,14 @@ class HomeController extends Controller
     {
         return view('add_project');
     }
+
+    public function client()
+    {
+        return view('client_list');
+    }
+
+    public function client_add()
+    {
+        dd('client_add');
+    }
 }

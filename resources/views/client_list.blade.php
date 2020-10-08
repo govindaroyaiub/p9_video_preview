@@ -11,28 +11,28 @@
         <div class="flex -mx-4">
             @include('sidebar') 
             <div class="w-3/4 mx-4">
-                <h3 class="text-xl font-semibold tracking-wide">Projects</h3>  
-                <a class="rounded-lg hover:bg-primary hover:text-white py-2 block" href="/project/add">Add Project ++</a>
+                <h3 class="text-xl font-semibold tracking-wide">Client</h3>  
+                <a class="rounded-lg hover:bg-primary hover:text-white py-2 block" href="/client/add">Add Client ++</a>
                 <br>
                 <table id="project_table" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
 					<thead>
 						<tr>
-							<th data-priority="1">Project Name</th>
-							<th data-priority="2">Client Name</th>
+							<th data-priority="1">Name</th>
+							<th data-priority="2">Logo</th>
 							<th data-priority="3">Actions</th>
 							
 					</thead>
 					<tbody>
 						<tr>
-							<td>Dirk</td>
-							<td>Coffee Manager</td>
+							<td>Merkle</td>
+							<td>Logo</td>
 							<td>Ljubljana</td>
 						</tr>
 						
 						<!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
 						
 						<tr>
-							<td>USC</td>
+							<td>Fusion Lab</td>
 							<td>Customer Support</td>
 							<td>New York</td>
 						</tr>

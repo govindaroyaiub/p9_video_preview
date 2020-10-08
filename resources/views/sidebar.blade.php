@@ -2,7 +2,9 @@
     <ul class="space-y-2">
         <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/">Dashboard</a>
         </li>
-        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Project</a>
+        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Projects</a>
+        </li>
+        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/client">Clients</a>
         </li>
     </ul>
 
