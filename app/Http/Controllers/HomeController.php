@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_list = User::get();
+        return view('home', compact('user_list'));
     }
 
     public function project()
@@ -33,6 +35,6 @@ class HomeController extends Controller
 
     public function project_add()
     {
-        dd('project_add');
+        return view('add_project');
     }
 }

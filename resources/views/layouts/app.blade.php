@@ -8,6 +8,7 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <style>
     		/*Form fields*/
 		.dataTables_wrapper select,
@@ -85,7 +86,8 @@
 
                     <button @click="logout = true" class="focus:outline-none">{{ Auth::user()->name }}</button>
 
-                    <div class="absolute bg-white shadow-md rounded-lg p-2" x-show="logout" @click.away="logout = false">
+                    <div class="absolute bg-white shadow-md rounded-lg p-6" x-show="logout" @click.away="logout = false">
+
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

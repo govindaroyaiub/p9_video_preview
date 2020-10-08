@@ -32,27 +32,22 @@
                 <table class="table w-full">
                     <thead>
                     <tr>
+                        <th class="bg-gray-200 px-4 py-2">No.</th>
                         <th class="bg-gray-200 px-4 py-2">Name</th>
                         <th class="bg-gray-200 px-4 py-2">Email</th>
                         <th class="bg-gray-200 px-4 py-2">Role</th>
                     </tr>
                     </thead>
+                    <?php $i=1; ?>
                     <tbody>
+                    @foreach($user_list as $user)
                     <tr>
-                        <td class="border px-4 py-2">Maarten Roelofs</td>
-                        <td class="border px-4 py-2">maarten.roelofs@gmail.com</td>
+                        <td class="border px-4 py-2">{{$i++}}</td>
+                        <td class="border px-4 py-2">{{ $user->name }}</td>
+                        <td class="border px-4 py-2">{{ $user->email }}</td>
                         <td class="border px-4 py-2">Admin</td>
                     </tr>
-                    <tr>
-                        <td class="border px-4 py-2">Ebn Sina</td>
-                        <td class="border px-4 py-2">ebnsina@gmail.com</td>
-                        <td class="border px-4 py-2">User</td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2">Govinda Roy</td>
-                        <td class="border px-4 py-2">gopi@gmail.com</td>
-                        <td class="border px-4 py-2">Admin</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
 

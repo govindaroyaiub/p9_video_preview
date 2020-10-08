@@ -4,7 +4,6 @@
         </li>
         <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Project</a>
         </li>
-        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="#">Users</a></li>
     </ul>
 
     <div class="text-center text-sm text-gray-700 mb-2">&copy; Planetnine - 2020</div>
