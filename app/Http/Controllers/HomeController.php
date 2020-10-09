@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\MainProject;
+use App\SubProject;
+use App\Comments;
+use App\Sizes;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,33 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_list = User::get();
+        return view('home', compact('user_list'));
+    }
+
+    public function project()
+    {
+        return view('project');
+    }
+
+    public function project_add()
+    {
+        return view('add_project');
+    }
+
+    public function client()
+    {
+        return view('client_list');
+    }
+
+    public function client_add()
+    {
+        dd('client_add');
+    }
+
+    public function sizes()
+    {
+        $size_list = Sizes::orderBy('width', 'ASC')->get();
+        return view('sizes', compact('size_list'));
     }
 }
