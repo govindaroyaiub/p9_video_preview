@@ -34,7 +34,6 @@
                           d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
                 </svg>
 
-
                 <div x-show="commentModal"
                      @click.away="commentModal = false"
                      class="h-screen bg-white shadow absolute top-0 right-0 w-64 p-4 rounded-lg">
@@ -47,7 +46,6 @@
                     </svg>
 
                     <p class="my-4">If you like this video feel free to feedback us!</p>
-
 
                     <form action="">
                         <textarea name="comment" id="comment" cols="5" rows="5"
