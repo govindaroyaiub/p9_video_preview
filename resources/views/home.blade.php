@@ -16,15 +16,15 @@
                 <div class="grid grid-cols-3 gap-8 mt-4">
                     <div class="bg-blue-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Projects</h3>
-                        <h2 class="text-blue-800 text-3xl font-bold">34</h2>
+                        <h2 class="text-blue-800 text-3xl font-bold">{{ $total_projects }}</h2>
                     </div>
                     <div class="bg-green-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Videos</h3>
-                        <h2 class="text-green-800 text-3xl font-bold">12</h2>
+                        <h2 class="text-green-800 text-3xl font-bold">{{ $total_videos }}</h2>
                     </div>
                     <div class="bg-red-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Comments</h3>
-                        <h2 class="text-red-800 text-3xl font-bold">8</h2>
+                        <h2 class="text-red-800 text-3xl font-bold">{{ $total_comments }}</h2>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                     <?php $i=1; ?>
                     <tbody>
                     @foreach($user_list as $user)
-                        <tr>
+                        <tr style="text-align: center;">
                             <td class="border px-4 py-2">{{$i++}}</td>
                             <td class="border px-4 py-2">{{ $user->name }}</td>
                             <td class="border px-4 py-2">{{ $user->email }}</td>

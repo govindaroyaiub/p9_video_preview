@@ -74,7 +74,7 @@
 <nav class="bg-white">
     <div class="relative container mx-auto px-4 py-3 flex justify-between items-center">
         <a class="text-xl font-semibold" href="{{ url('/') }}">
-            <img src="https://www.planetnine.com/wp-content/uploads/2020/06/cropped-logo_def.png" style="max-width:20.6%;">
+            <img src="{{ asset('/images/logo.png') }}" style="max-width: 20.6%">
         </a>
 
         <ul class="flex space-x-4">
@@ -110,7 +110,6 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
 <script>
 $(document).ready(function() {
     var table = $('#datatable').DataTable( {
@@ -120,8 +119,7 @@ $(document).ready(function() {
                 [10, 25, 50, "All"]
             ]
         } )
-        .columns.adjust()
-		.responsive.recalc();
+        .columns.adjust();
 } );
 </script>
 </body>

@@ -54,7 +54,7 @@
 
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr style="text-align: center;">
                         <td>Merkle</td>
                         <td>Logo</td>
                         <td>Ljubljana</td>
@@ -62,7 +62,7 @@
 
                     <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
 
-                    <tr>
+                    <tr style="text-align: center;">
                         <td>Fusion Lab</td>
                         <td>Customer Support</td>
                         <td>New York</td>

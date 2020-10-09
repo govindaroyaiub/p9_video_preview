@@ -15,8 +15,11 @@ class Sizes extends Migration
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->bigInteger('width');
             $table->bigInteger('height');
+            $table->bigInteger('front_width');
+            $table->bigInteger('front_height');
             $table->timestamps();
         });
     }

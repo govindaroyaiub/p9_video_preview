@@ -17,7 +17,7 @@ class SubProject extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('project_id');
-            $table->string('side_id');
+            $table->string('size_id');
             $table->string('codec');
             $table->string('aspect_ratio');
             $table->string('fps');
