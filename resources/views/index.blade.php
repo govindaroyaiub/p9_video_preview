@@ -19,26 +19,35 @@
                 <h3>Project Name: <span class="font-semibold">DMM - James Autoservice</span></h3>
             </div>
 
-            <div x-show="commentModal"
-                     @click.away="commentModal = false"
-                     class="h-screen bg-white shadow absolute top-0 right-0 w-64 p-4 rounded-lg">
-                    <svg class="w-8 h-8 text-red-400 font-semibold"
-                         @click="commentModal = false"
-                         fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                         xmlns="http://www.w3.org/2000/svg">
+            <div class="flex">
+                <img src="{{ asset('/images/logo.png') }}" alt="Planet Nine" class="w-32 flex-none mr-4" />
+                <div x-data="{ commentModal: false }">
+                    <svg @click.transition="commentModal = true" class="w-8 h-8 text-primary" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
                         </path>
                     </svg>
-                    <p class="my-4">If you like this video feel free to feedback us!</p>
 
-                    <form action="">
-                        <textarea name="comment" id="comment" cols="5" rows="5"
-                                  class="w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
-                        <button type="submit" class="bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Submit
-                            Comment!
-                        </button>
-                    </form>
+                    <div x-show="commentModal" @click.away="commentModal = false"
+                        class="h-screen bg-white shadow absolute top-0 right-0 w-64 p-4 rounded-lg">
+                        <svg class="w-8 h-8 text-red-400 font-semibold" @click="commentModal = false" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+
+                        <p class="my-4">If you like this video feel free to feedback us!</p>
+
+                        <form action="">
+                            <textarea name="comment" id="comment" cols="5" rows="5"
+                                    class="w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
+                            <button type="submit" class="bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Submit
+                                Comment!
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
