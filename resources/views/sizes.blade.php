@@ -11,7 +11,8 @@
     <div class="flex -mx-4">
         @include('sidebar')
         <div class="w-3/4 mx-4">
-            <div class="flex justify-center">
+            <div class="flex justify-between w-full">
+            <h3 class="text-xl font-semibold tracking-wide">Resolution Sizes</h3>
                 <a href="/sizes/add">
                 <button type="button"
                     class="leading-tight bg-primary text-gray-200 rounded px-6 py-3 text-sm focus:outline-none focus:border-white">Add
