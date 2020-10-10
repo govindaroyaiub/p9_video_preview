@@ -10,8 +10,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/project/view/{id}', 'ProjectController@project_view')->name('project_view');
-Route::post('/comment/{id}', 'ProjectController@comment')->name('comment');
+Route::get('/project/view/{id}', 'ProjectConTroller@project_view')->name('project_view');
+Route::post('/comment/{id}', 'ProjectConTroller@comment')->name('comment');
 
 Route::get('/index', function()
 {
