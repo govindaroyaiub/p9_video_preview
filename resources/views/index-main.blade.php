@@ -45,12 +45,15 @@
                         @if($comments_count == 0)
                         <p class="my-4">If you like this video feel free to feedback us!</p>
                         @else
+                        <p class="my-4">Comments:</p>
                         @foreach($comments as $comment)
-                        <textarea name="comment" id="comment" cols="5" rows="5"
-                                    class="w-full border border-gray-600 focus:outline-none rounded-lg" readonly>{{ $comments->comment }}</textarea>
+                        <textarea name="comment" id="comment" cols="5" rows="3"
+                                    class="w-full border border-gray-600 focus:outline-none rounded-lg" readonly>{{ $comment->comment }}</textarea>
+                        <br>
                         @endforeach
                         @endif
-                        <form action="">
+                        <form action="/comment/{{ $main_project_id }}" method="POST">
+                            @csrf
                             <textarea name="comment" id="comment" cols="5" rows="5"
                                     class="w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
                             <button type="submit" class="bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Comment

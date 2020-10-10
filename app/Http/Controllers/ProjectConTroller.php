@@ -38,7 +38,7 @@ class ProjectConTroller extends Controller
                                         ->orderBy('sizes.width')
                                         ->get();
 
-        $comments = Comments::where('project_id', $main_project_id)->get();
+        $comments = Comments::where('project_id', $main_project_id)->orderBy('created_at', 'DESC')->get();
 
         $comments_count = Comments::where('project_id', $main_project_id)->get()->count();
 
@@ -50,5 +50,17 @@ class ProjectConTroller extends Controller
             'comments_count',
             'main_project_id'
         ));
+    }
+
+    public function comment($id, Request $request)
+    {
+        $project_id = $id;
+
+        $comment = new Comments;
+        $comment->comment = $request->comment;
+        $comment->project_id = $project_id;
+        $comment->save();
+
+        return redirect('/project/view/'.$project_id);
     }
 }

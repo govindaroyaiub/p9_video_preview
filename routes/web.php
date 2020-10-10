@@ -11,6 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/project/view/{id}', 'ProjectController@project_view')->name('project_view');
+Route::post('/comment/{id}', 'ProjectController@comment')->name('comment');
 
 Route::get('/index', function()
 {
