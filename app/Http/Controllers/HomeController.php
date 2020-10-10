@@ -8,6 +8,7 @@ use App\MainProject;
 use App\SubProject;
 use App\Comments;
 use App\Sizes;
+use App\Logo;
 
 class HomeController extends Controller
 {
@@ -47,12 +48,42 @@ class HomeController extends Controller
 
     public function client()
     {
-        return view('client_list');
+        $logo_list = Logo::get();
+        return view('client_list', compact('logo_list'));
     }
 
     public function client_add()
     {
-        dd('client_add');
+        return view('add_logo');
+    }
+
+    public function logo_add_post(Request $request)
+    {
+        $request->validate([
+            'logo_file' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        $imageName = $request->company_name.time().'.'.$request->logo_file->extension();  
+        $request->logo_file->move(public_path('logo_images'), $imageName);
+
+        $logo_details = [
+            'name' => $request->company_name,
+            'path' => $imageName
+        ];
+        Logo::insert($logo_details);
+        return redirect('/logo')->with('success', 'Logo for '.$request->company_name.' has been uploaded!');
+    }
+
+    public function logo_delete($id)
+    {
+        $logo_info = Logo::where('id', $id)->first();
+        Logo::where('id', $id)->delete();
+
+        $image_path = public_path('logo_images/').$logo_info['path']; 
+        if (file_exists($image_path)) {
+            @unlink($image_path);
+        }
+        return redirect('/logo')->with('danger', $logo_info['name'].' logo has been deleted!');
     }
 
     public function sizes()

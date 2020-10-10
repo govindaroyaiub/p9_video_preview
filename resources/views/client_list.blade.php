@@ -14,42 +14,41 @@
             @include('alert')
             <br>
             <div class="flex justify-between w-full">
-                <h3 class="text-xl font-semibold tracking-wide">Clients</h3>
-                <a href="/client/add">
+                <h3 class="text-xl font-semibold tracking-wide">Logos</h3>
+                <a href="/logo/add">
                     <button type="button"
                         class="leading-tight bg-primary text-gray-200 rounded px-6 py-3 text-sm focus:outline-none focus:border-white">Add
-                        Client</Button>
+                        Logo</Button>
                 </a>
             </div>
             <br>
             <table id="datatable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
                     <tr>
-                        <th data-priority="1">Name</th>
-                        <th data-priority="2">Logo</th>
-                        <th data-priority="3">Actions</th>
-
+                        <th data-priority="1">No</th>
+                        <th data-priority="2">Name</th>
+                        <th data-priority="3">Logo</th>
+                        <th data-priority="4">Actions</th>
+                    </tr>
                 </thead>
+                <?php $i=1; ?>
                 <tbody>
-                    <tr style="text-align: center;">
-                        <td>Merkle</td>
-                        <td>Logo</td>
-                        <td>Ljubljana</td>
+                @foreach($logo_list as $logo)
+                    <tr align="center">
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $logo->name }}</td>
+                        <td>
+                            <img src="{{url('/logo_images/').'/'.$logo->path}}" width=200 height=200>
+                        </td>
+                        <td>
+                        <a href="/logo/delete/{{$logo->id}}">
+                            <button type="button"
+                                    class="bg-red-500 text-gray-200 rounded hover:bg-red-400 px-4 py-2 focus:outline-none">Delete</button>
+                        </td>
                     </tr>
-
-                    <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
-
-                    <tr style="text-align: center;">
-                        <td>Fusion Lab</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                    </tr>
+                @endforeach
                 </tbody>
-
             </table>
-
-
-
         </div>
     </div>
 </div>

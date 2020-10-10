@@ -4,7 +4,7 @@
         </li>
         <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Projects</a>
         </li>
-        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/client">Clients</a>
+        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/logo">Logos</a>
         </li>
         <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/sizes">Sizes</a>
         </li>
