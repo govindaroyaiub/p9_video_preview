@@ -10,6 +10,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/project/view/{id}', 'ProjectController@project_view')->name('project_view');
+
 Route::get('/index', function()
 {
     return view('index');

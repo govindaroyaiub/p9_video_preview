@@ -39,7 +39,7 @@
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->client_name }}</td>
                         <td>
-                            <a href="/project/{{$project->id}}">
+                            <a href="/project/view/{{$project->id}}" target="_blank">
                                 <button type="button"
                                     class="bg-green-500 text-gray-200 rounded hover:bg-green-400 px-4 py-2 focus:outline-none">View</button>
                             </a>

@@ -17,17 +17,17 @@
                 @csrf
                 <label class="text-primary font-light">Project Name</label><br>
                 <input type='text' placeholder="Enter Project Name" name="project_name"
-                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 <br>
 
                 <label class="text-primary font-light">Client Name</label><br>
                 <input type='text' placeholder="Enter Client Name" name="client_name"
-                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 <br>
 
                 <label class="text-primary font-light">Select Logo</label><br>
                 <select name="logo_id"
-                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary">
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required>
                     <option value="0" class="py-2">Select Logo</option>
                     @foreach($logo_list as $logo)
                     <option value="{{ $logo->id }}" class="py-2">{{ $logo->name }}</option>
@@ -46,7 +46,7 @@
 
                 <label class="text-primary font-light">Advertising Format</label><br>
                 <select name="size_id"
-                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary">
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required>
                     <option value="0" class="py-2">Select Size</option>
                     @foreach($size_list as $size)
                     <option value="{{ $size->id }}" class="py-2">{{ $size->name }} (
@@ -56,16 +56,16 @@
 
                 <div class="flex mb-4">
                     <input type='text' placeholder="Enter Codec" name="codec"
-                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                     <input type='text' placeholder="Enter Aspect Ratio" name="aspect_ratio"
-                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 </div>
 
                 <div class="flex mb-4">
                     <input type='text' placeholder="Enter Frame Per Second" name="fps"
-                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                     <input type='text' placeholder="Enter Video Size" name="size"
-                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 </div>
 
                 <label class="text-primary font-light">Select Companion Banner Poster</label><br>
@@ -75,7 +75,7 @@
 
                 <label class="text-primary font-light">Select Video File</label><br>
                 <input type="file" name="video"
-                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary">
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required>
 
                 <div class="flex mb-4">
                     <button type="submit"

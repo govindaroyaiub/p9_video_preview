@@ -16,9 +16,9 @@
             <form method="POST" action="/logo/add" enctype="multipart/form-data">
             @csrf
             <input type='text' placeholder="Enter Company Name" name="company_name"
-                class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
 
-            <input type="file" name="logo_file" class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary">
+            <input type="file" name="logo_file" class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" >
 
             <div class="flex mb-4">
                 <button type="submit"

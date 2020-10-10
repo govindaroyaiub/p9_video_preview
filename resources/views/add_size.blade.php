@@ -16,20 +16,20 @@
             <form method="POST" action="/sizes/add" enctype="multipart/form-data">
             @csrf
             <input type='text' placeholder="Enter Size Name" name="size_name"
-                class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
 
             <div class="flex mb-4">
                 <input type='text' placeholder="Enter Width" name="width"
-                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 <input type='text' placeholder="Enter Height" name="height"
-                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
             </div>
 
             <div class="flex mb-4">
                 <input type='text' placeholder="Enter Front Width" name="front_width"
-                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 <input type='text' placeholder="Enter Front Height" name="front_height"
-                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />
+                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
             </div>
 
             <div class="flex mb-4">
