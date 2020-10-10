@@ -21,6 +21,9 @@
                     <div class="bg-green-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Videos</h3>
                         <h2 class="text-green-800 text-3xl font-bold">{{ $total_videos }}</h2>
+                        <hr>
+                        <h3 class="text-gray-800 text-2xl">Total Video Space</h3>
+                        <h2 class="text-blue-800 text-3xl font-bold">{{ $total_number }} MB</h2>
                     </div>
                     <div class="bg-red-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Comments</h3>

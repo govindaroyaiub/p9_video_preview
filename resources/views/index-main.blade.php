@@ -28,7 +28,6 @@
                 <div x-data="{ commentModal: false }">
                     <svg @click.transition="commentModal = true" class="w-8 h-8 text-primary" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
                         </path>
@@ -65,9 +64,11 @@
         </div>
     </header>
 
-    @if(Auth::user())
-    <a href="/project/addon/{{ $main_project_id }}"> Add More + </a>
-    @endif
+    <div class="container mx-auto px-4 py-1">
+        @if(Auth::user())
+        <a href="/project/addon/{{ $main_project_id }}"> Add More + </a>
+        @endif
+    </div>
 
     <main class="main">
         @foreach($sub_project_info as $project)
@@ -84,30 +85,32 @@
                                 <source src="{{ asset('/banner_videos/'.'/'.$project->video_path) }}" type="video/mp4" />
                             </video>
                         </div>
-                        <a href="{{ asset('/banner_videos/'.'/'.$project->video_path) }}" class="color-primary underline flex mt-4"
-                            download>Download Video
-                            <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                        </a>
-                        @if(Auth::user())
-                        <a href="/video/edit/{{ $project->id }}" class="color-primary underline flex mt-4">Edit
-                            <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                        </a>
-                        <a href="/video/delete/{{ $project->id }}" class="color-primary underline flex mt-4">Delete
-                            <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                        </a>
-                        @endif
+                        <div class="md:flex">
+                            <a href="{{ asset('/banner_videos/'.'/'.$project->video_path) }}" class="color-primary underline flex mt-4"
+                                download>Download Video
+                                <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </a>
+                            @if(Auth::user())
+                            <a href="/video/edit/{{ $project->id }}" class="color-primary underline flex mt-4">Edit
+                                <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </a>
+                            <a href="/video/delete/{{ $project->id }}" class="color-primary underline flex mt-4">Delete
+                                <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="w-1/4 mx-8">

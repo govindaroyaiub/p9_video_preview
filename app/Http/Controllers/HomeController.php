@@ -33,7 +33,19 @@ class HomeController extends Controller
         $total_projects = MainProject::get()->count();
         $total_videos = SubProject::get()->count();
         $total_comments = Comments::get()->count();
-        return view('home', compact('user_list', 'total_projects', 'total_videos', 'total_comments'));
+        $video_sizes = SubProject::select('size')->get();
+        $total_size = array();
+
+        foreach($video_sizes as $video)
+        {
+            $size_text = $video->size;
+            $size_number = trim($size_text," MB");
+            
+            array_push($total_size, intval($size_number));
+        }
+
+        $total_number = array_sum($total_size);
+        return view('home', compact('user_list', 'total_projects', 'total_videos', 'total_comments', 'total_number'));
     }
 
     public function project()
@@ -149,11 +161,14 @@ class HomeController extends Controller
     {
         $sub_project_info = SubProject::where('id', $id)->first();
 
-        $poster_path = public_path('poster_images/').$sub_project_info['poster_path']; 
-        if (file_exists($poster_path)) {
-            @unlink($poster_path);
+        if($sub_project_info['poster_path'] != NULL)
+        {
+            $poster_path = public_path('poster_images/').$sub_project_info['poster_path']; 
+            if (file_exists($poster_path)) {
+                @unlink($poster_path);
+            }
         }
-
+        
         $video_path = public_path('banner_videos/').$sub_project_info['video_path']; 
         if (file_exists($video_path)) {
             @unlink($video_path);
@@ -161,6 +176,32 @@ class HomeController extends Controller
         SubProject::where('id', $id)->delete();
 
         return redirect('/project/view/'.$sub_project_info['project_id']);
+    }
+
+    public function project_delete($id)
+    {
+        $main_project_info = MainProject::where('id', $id)->first();
+
+        $sub_project_info = SubProject::where('project_id', $id)->get();
+        foreach($sub_project_info as $sub_project)
+        {
+            if($sub_project->poster_path != NULL)
+            {
+                $poster_path = public_path('poster_images/').$sub_project->poster_path; 
+                if (file_exists($poster_path)) {
+                    @unlink($poster_path);
+                }
+            }
+            $video_path = public_path('banner_videos/').$sub_project->video_path; 
+            if (file_exists($video_path)) {
+                @unlink($video_path);
+            }
+
+            SubProject::where('id', $sub_project->id)->delete();
+        }
+        MainProject::where('id', $id)->delete();
+
+        return redirect('/project')->with('danger', $main_project_info['name'].' been deleted along with assets!');
     }
 
     public function client()
