@@ -83,7 +83,7 @@ class HomeController extends Controller
 
         if($request->has('poster'))
         {
-            $poster_name = $sub_project_name.time().'.'.$request->poster->extension();  
+            $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
             $request->poster->move(public_path('poster_images'), $poster_name);
         }
         else
@@ -91,7 +91,7 @@ class HomeController extends Controller
             $poster_name = NULL;
         }
 
-        $video_name = $sub_project_name.time().'.'.$request->video->extension();  
+        $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();  
         $request->video->move(public_path('banner_videos'), $video_name);
        
         $sub_project = new SubProject;
@@ -131,7 +131,7 @@ class HomeController extends Controller
 
         if($request->has('poster'))
         {
-            $poster_name = $sub_project_name.time().'.'.$request->poster->extension();  
+            $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
             $request->poster->move(public_path('poster_images'), $poster_name);
         }
         else
@@ -139,7 +139,7 @@ class HomeController extends Controller
             $poster_name = NULL;
         }
 
-        $video_name = $sub_project_name.time().'.'.$request->video->extension();  
+        $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();  
         $request->video->move(public_path('banner_videos'), $video_name);
        
         $sub_project = new SubProject;
@@ -221,7 +221,7 @@ class HomeController extends Controller
             'logo_file' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-        $imageName = $request->company_name.time().'.'.$request->logo_file->extension();  
+        $imageName = $request->company_name.'_'.time().'.'.$request->logo_file->extension();  
         $request->logo_file->move(public_path('logo_images'), $imageName);
 
         $logo = new Logo;

@@ -21,7 +21,8 @@
 
             <div class="flex">
                 @if($main_project_info->is_logo == 1)
-                <img src="{{ asset('/logo_images/'.'/'.$main_project_info->path) }}" alt="{{ $main_project_info['client_name'] }}" class="w-32 flex-none mr-4" />
+                <img src="{{ asset('/logo_images/'.'/'.$main_project_info->path) }}"
+                    alt="{{ $main_project_info['client_name'] }}" class="w-32 flex-none mr-4" />
                 @else
 
                 @endif
@@ -47,14 +48,15 @@
                         <p class="my-4" style="text-decoration: underline;">Comments:</p>
                         @foreach($comments as $comment)
                         <textarea name="comment" id="comment" cols="5" rows="3"
-                                    class="w-full border bg-gray-300  border-gray-600 focus:outline-none rounded-lg" readonly>{{ $comment->comment }}</textarea>
+                            class="w-full border bg-gray-300  border-gray-600 focus:outline-none rounded-lg"
+                            readonly>{{ $comment->comment }}</textarea>
                         <br>
                         @endforeach
                         @endif
                         <form action="/comment/{{ $main_project_id }}" method="POST">
                             @csrf
                             <textarea name="comment" id="comment" cols="5" rows="5"
-                                    class="w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
+                                class="w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
                             <button type="submit" class="bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Comment
                             </button>
                         </form>
@@ -64,10 +66,13 @@
         </div>
     </header>
 
-    <div class="container mx-auto px-4 py-1">
-        @if(Auth::user())
-        <a href="/project/addon/{{ $main_project_id }}"> Add More + </a>
-        @endif
+    <div class="container mx-auto px-4 py-2">
+        <div class="md:flex">
+            @if(Auth::user())
+            <a href="/home" target="_blank"> Dashboard </a>
+            <a href="/project/addon/{{ $main_project_id }}"> Add More + </a>
+            @endif
+        </div>
     </div>
 
     <main class="main">
@@ -79,15 +84,17 @@
                         <h2 class="text-xl font-semibold mb-4">
                             Confusing text!
                         </h2>
-
                         <div class="video-container aspect-ratio-16-9">
-                            <video class="video" playsinline controls data-poster="poster.jpg" @if($project->width >= 1980) width="560" height="315" @elseif($project->width < 1980) width="560" height="100" @endif>
-                                <source src="{{ asset('/banner_videos/'.'/'.$project->video_path) }}" type="video/mp4" />
+                            <video class="video" playsinline controls data-poster="poster.jpg" @if($project->width >=
+                                1980) width="560" height="315" @elseif($project->width < 1980) width="560" height="100"
+                                    @endif>
+                                    <source src="{{ asset('/banner_videos/'.'/'.$project->video_path) }}"
+                                        type="video/mp4" />
                             </video>
                         </div>
                         <div class="md:flex">
-                            <a href="{{ asset('/banner_videos/'.'/'.$project->video_path) }}" class="color-primary underline flex mt-4"
-                                download>Download Video
+                            <a href="{{ asset('/banner_videos/'.'/'.$project->video_path) }}"
+                                class="color-primary underline flex mt-4" download>Download Video
                                 <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -147,8 +154,8 @@
 
                             <img class="block" src="{{ '/images/companion-banner.png'  }}" alt="companion banner">
 
-                            <a href="{{ asset('/poster_images/'.'/'.$project->poster_path) }}" class="color-primary underline flex mt-2"
-                                download>Download
+                            <a href="{{ asset('/poster_images/'.'/'.$project->poster_path) }}"
+                                class="color-primary underline flex mt-2" download>Download
                                 <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -166,7 +173,8 @@
 
     @if($main_project_info->is_footer == 1)
     <footer class="footer bg-primary">
-        <div class="container mx-auto px-4 py-3 text-white text-center">&copy; All Right Reserved. <a href="https://www.planetnine.com/" target="_blank" style="text-decoration: underline;">Planet Nine</a>
+        <div class="container mx-auto px-4 py-3 text-white text-center">&copy; All Right Reserved. <a
+                href="https://www.planetnine.com/" target="_blank" style="text-decoration: underline;">Planet Nine</a>
             - <?= Date('Y') ?></div>
     </footer>
     @else
