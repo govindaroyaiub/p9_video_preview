@@ -16,6 +16,16 @@ class ProjectConTroller extends Controller
     {
         $main_project_id = $id;
         $main_project_info = MainProject::join('logo', 'main_project.logo_id', 'logo.id')
+                                        ->select(
+                                            'main_project.name as name',
+                                            'main_project.client_name',
+                                            'main_project.logo_id',
+                                            'main_project.color',
+                                            'main_project.is_logo',
+                                            'main_project.is_footer',
+                                            'logo.name as logo_name',
+                                            'logo.path' 
+                                        )
                                         ->where('main_project.id', $main_project_id)
                                         ->first();
 

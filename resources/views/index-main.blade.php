@@ -80,7 +80,7 @@
                         </h2>
 
                         <div class="video-container aspect-ratio-16-9">
-                            <video class="video" playsinline controls data-poster="poster.jpg" width="560" height="315">
+                            <video class="video" playsinline controls data-poster="poster.jpg" @if($project->width >= 1980) width="560" height="315" @elseif($project->width < 1980) width="560" height="100" @endif>
                                 <source src="{{ asset('/banner_videos/'.'/'.$project->video_path) }}" type="video/mp4" />
                             </video>
                         </div>
@@ -117,6 +117,10 @@
                             <tr>
                                 <td>Aspect Ratio:</td>
                                 <td>{{ $project->aspect_ratio }}</td>
+                            </tr>
+                            <tr>
+                                <td>Resolution (WxH):</td>
+                                <td>{{ $project->width }}x{{ $project->height }}</td>
                             </tr>
                             <tr>
                                 <td>Codec:</td>
