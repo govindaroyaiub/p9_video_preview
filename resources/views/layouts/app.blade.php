@@ -73,9 +73,11 @@
 <body class="bg-gray-100 min-h-screen font-body">
 <nav class="bg-white">
     <div class="relative container mx-auto px-4 py-3 flex justify-between items-center">
+		@if(Auth::user())
         <a class="text-xl font-semibold" href="{{ url('/') }}">
             <img src="{{ asset('/images/logo.png') }}" style="max-width: 20.6%">
         </a>
+		@endif
 
         <ul class="flex space-x-4">
             @guest

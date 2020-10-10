@@ -45,7 +45,7 @@
                         @if($comments_count == 0)
                         <p class="my-4">If you like this video feel free to feedback us!</p>
                         @else
-                        <p class="my-4">Comments:</p>
+                        <p class="my-4" style="text-decoration: underline;">Comments:</p>
                         @foreach($comments as $comment)
                         <textarea name="comment" id="comment" cols="5" rows="3"
                                     class="w-full border border-gray-600 focus:outline-none rounded-lg" readonly>{{ $comment->comment }}</textarea>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="w-1/4 mx-8">
-                    <h2 class="text-xl font-semibold mb-8">Specifications:</h2>
+                    <h2 class="text-xl font-semibold mb-8" style="text-decoration: underline;">Specifications:</h2>
                     <table class="table w-full">
                         <tbody>
                             <tr>
