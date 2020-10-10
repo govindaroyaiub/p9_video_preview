@@ -48,7 +48,7 @@
                         <p class="my-4" style="text-decoration: underline;">Comments:</p>
                         @foreach($comments as $comment)
                         <textarea name="comment" id="comment" cols="5" rows="3"
-                                    class="w-full border border-gray-600 focus:outline-none rounded-lg" readonly>{{ $comment->comment }}</textarea>
+                                    class="w-full border bg-gray-300  border-gray-600 focus:outline-none rounded-lg" readonly>{{ $comment->comment }}</textarea>
                         <br>
                         @endforeach
                         @endif
