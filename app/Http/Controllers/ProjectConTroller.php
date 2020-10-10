@@ -51,7 +51,6 @@ class ProjectConTroller extends Controller
 
         $comments_count = Comments::where('project_id', $main_project_id)->get()->count();
 
-        // dd($main_project_info);
         return view('index-main', compact(
             'main_project_info',
             'sub_project_info',
