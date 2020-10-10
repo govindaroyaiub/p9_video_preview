@@ -65,6 +65,10 @@
         </div>
     </header>
 
+    @if(Auth::user())
+    <a href="/project/addon/{{ $main_project_id }}"> Add More + </a>
+    @endif
+
     <main class="main">
         @foreach($sub_project_info as $project)
         <div class="container mx-auto px-4 py-10">
@@ -72,7 +76,7 @@
                 <div class="w-3/4 mx-8">
                     <div class="videos">
                         <h2 class="text-xl font-semibold mb-4">
-                            {{ $project->size_name }}
+                            Confusing text!
                         </h2>
 
                         <div class="video-container aspect-ratio-16-9">
@@ -88,6 +92,22 @@
                                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                             </svg>
                         </a>
+                        @if(Auth::user())
+                        <a href="/video/edit/{{ $project->id }}" class="color-primary underline flex mt-4">Edit
+                            <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                        </a>
+                        <a href="/video/delete/{{ $project->id }}" class="color-primary underline flex mt-4">Delete
+                            <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                        </a>
+                        @endif
                     </div>
                 </div>
                 <div class="w-1/4 mx-8">
@@ -113,13 +133,14 @@
                         </tbody>
                     </table>
 
+                    @if($project->poster_path != NULL)
                     <div class="mt-4">
                         <div class="companion-banner">
-                            <h2 class="text-xl font-semibold mb-4">Companion Banner 300x60</h2>
+                            <h2 class="text-xl font-semibold mb-4">{{ $project->size_name }}</h2>
 
                             <img class="block" src="{{ '/images/companion-banner.png'  }}" alt="companion banner">
 
-                            <a href="{{ '/images/companion-banner.png'  }}" class="color-primary underline flex mt-2"
+                            <a href="{{ asset('/poster_images/'.'/'.$project->poster_path) }}" class="color-primary underline flex mt-2"
                                 download>Download
                                 <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -129,6 +150,7 @@
                             </a>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

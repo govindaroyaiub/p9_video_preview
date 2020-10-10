@@ -26,13 +26,6 @@
             </div>
 
             <div class="flex mb-4">
-                <input type='text' placeholder="Enter Front Width" name="front_width"
-                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
-                <input type='text' placeholder="Enter Front Height" name="front_height"
-                    class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
-            </div>
-
-            <div class="flex mb-4">
                 <button type="submit"
                     class="w-1/3 mt-2 mb-6 bg-blue-600 text-gray-200 text-lg rounded hover:bg-blue-500 px-6 py-3 focus:outline-none">Create</button>
                 <button type="button" onclick="window.location.href='/sizes';"

@@ -21,6 +21,7 @@ class ProjectConTroller extends Controller
 
         $sub_project_info = SubProject::join('sizes', 'sub_project.size_id', 'sizes.id')
                                         ->select(
+                                            'sub_project.id',
                                             'sub_project.name as sub_name',
                                             'sub_project.codec',
                                             'sub_project.aspect_ratio',
@@ -30,12 +31,10 @@ class ProjectConTroller extends Controller
                                             'sub_project.video_path',
                                             'sizes.name as size_name',
                                             'sizes.width',
-                                            'sizes.height',
-                                            'sizes.front_width',
-                                            'sizes.front_height'
+                                            'sizes.height'
                                         )
                                         ->where('project_id', $main_project_id)
-                                        ->orderBy('sizes.width')
+                                        ->orderBy('sizes.width', 'DESC')
                                         ->get();
 
         $comments = Comments::where('project_id', $main_project_id)->orderBy('created_at', 'DESC')->get();

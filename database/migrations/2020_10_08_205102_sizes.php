@@ -18,8 +18,6 @@ class Sizes extends Migration
             $table->string('name');
             $table->bigInteger('width');
             $table->bigInteger('height');
-            $table->bigInteger('front_width');
-            $table->bigInteger('front_height');
             $table->timestamps();
         });
     }
