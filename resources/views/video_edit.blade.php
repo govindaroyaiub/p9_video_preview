@@ -14,7 +14,7 @@
             <h3 class="text-xl font-semibold tracking-wide">Edit Video</h3>
             <h3 class="text-xl font-semibold tracking-wide text-red-500">Just Edit What You Need to Edit Or Replace The Assets</h3>
             <br>
-            <form method="POST" action="/project/addon/{{ $sub_project_id }}" enctype="multipart/form-data">
+            <form method="POST" action="/video/edit/{{ $sub_project_id }}" enctype="multipart/form-data">
                 @csrf
                 <label class="text-primary font-light">Advertising Format</label><br>
                 <select name="size_id"
