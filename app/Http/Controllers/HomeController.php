@@ -38,12 +38,50 @@ class HomeController extends Controller
 
     public function project()
     {
-        return view('project');
+        $project_list = MainProject::orderBy('created_at', 'DESC')->get();
+        return view('project', compact('project_list'));
     }
 
     public function project_add()
     {
-        return view('add_project');
+        $logo_list = Logo::get();
+        $size_list = Sizes::orderBy('width', 'DESC')->get();
+        return view('add_project', compact('logo_list', 'size_list'));
+    }
+
+    public function project_add_post(Request $request)
+    {
+        $main_project = new MainProject;
+        $main_project->name = $request->project_name;
+        $main_project->client_name = $request->client_name;
+        $main_project->logo_id = $request->logo_id;
+        $main_project->color = $request->color;
+        $main_project->is_logo = 1;
+        $main_project->is_footer = 1;
+        $main_project->save();
+
+        $request->validate([
+            'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        $poster_name = $request->project_name.time().'.'.$request->poster->extension();  
+        $request->poster->move(public_path('poster_images'), $poster_name);
+
+        $video_name = $request->project_name.time().'.'.$request->video->extension();  
+        $request->video->move(public_path('banner_videos'), $video_name);
+
+        $size_info = Sizes::where('id', $request->size_id)->first();
+        $sub_project = new SubProject;
+        $sub_project->name = $request->project_name.'_'.$size_info['width'].'x'.$size_info['height'];
+        $sub_project->project_id = $main_project->id;
+        $sub_project->size_id = $request->size_id;
+        $sub_project->codec = $request->codec;
+        $sub_project->aspect_ratio = $request->aspect_ratio;
+        $sub_project->fps = $request->fps;
+        $sub_project->size = $request->size;
+        $sub_project->poster_path = $poster_name;
+        $sub_project->video_path = $video_name;
+        $sub_project->save();
     }
 
     public function client()
@@ -66,11 +104,11 @@ class HomeController extends Controller
         $imageName = $request->company_name.time().'.'.$request->logo_file->extension();  
         $request->logo_file->move(public_path('logo_images'), $imageName);
 
-        $logo_details = [
-            'name' => $request->company_name,
-            'path' => $imageName
-        ];
-        Logo::insert($logo_details);
+        $logo = new Logo;
+        $logo->name = $request->company_name;
+        $logo->path = $imageName;
+        $logo->save();
+
         return redirect('/logo')->with('success', 'Logo for '.$request->company_name.' has been uploaded!');
     }
 
@@ -99,15 +137,14 @@ class HomeController extends Controller
 
     public function size_add_post(Request $request)
     {
-        $size_detials = [
-            'name' => $request->size_name,
-            'width' => $request->width,
-            'height' => $request->height,
-            'front_width' => $request->front_width,
-            'front_height' => $request->front_height
-        ];
+        $size = New Sizes;
+        $size->name = $request->size_name;
+        $size->width = $request->width;
+        $size->height = $request->height;
+        $size->front_width = $request->front_width;
+        $size->front_height = $request->front_height;
+        $size->save();
         
-        Sizes::insert($size_detials);
         return redirect('/sizes')->with('success', 'Size Added Successfully!');
     }
 

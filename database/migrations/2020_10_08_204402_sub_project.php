@@ -22,7 +22,8 @@ class SubProject extends Migration
             $table->string('aspect_ratio');
             $table->string('fps');
             $table->string('size');
-            $table->string('file_path');
+            $table->string('poster_path');
+            $table->string('video_path');
             $table->timestamps();
         });
     }

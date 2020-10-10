@@ -13,7 +13,7 @@
         <div class="w-3/4 mx-4">
             <h3 class="text-xl font-semibold tracking-wide">Add Sizes</h3>
             <br>
-            <form method="POST" action="/sizes/add">
+            <form method="POST" action="/sizes/add" enctype="multipart/form-data">
             @csrf
             <input type='text' placeholder="Enter Size Name" name="size_name"
                 class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" />

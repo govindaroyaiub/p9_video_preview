@@ -165,6 +165,23 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="mt-4">
+                        <div class="companion-banner">
+                            <h2 class="text-xl font-semibold mb-4">Companion Banner 300x60</h2>
+
+                            <img class="block" src="{{ '/images/companion-banner.png'  }}" alt="companion banner">
+
+                            <a href="{{ '/images/companion-banner.png'  }}" class="color-primary underline flex mt-2"
+                                download>Download
+                                <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

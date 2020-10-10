@@ -25,30 +25,37 @@
             <table id="datatable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
                     <tr>
-                        <th data-priority="1">Project Name</th>
-                        <th data-priority="2">Client Name</th>
-                        <th data-priority="3">Actions</th>
-
+                        <th data-priority="1">No</th>
+                        <th data-priority="2">Project Name</th>
+                        <th data-priority="3">Client Name</th>
+                        <th data-priority="4">Actions</th>
+                    </tr>
                 </thead>
+                <?php $i=1; ?>
                 <tbody>
-                    <tr>
-                        <td>Dirk</td>
-                        <td>Coffee Manager</td>
-                        <td>Ljubljana</td>
+                    @foreach($project_list as $project)
+                    <tr style="text-align: center;">
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $project->name }}</td>
+                        <td>{{ $project->client_name }}</td>
+                        <td>
+                            <a href="/project/{{$project->id}}">
+                                <button type="button"
+                                    class="bg-green-500 text-gray-200 rounded hover:bg-green-400 px-4 py-2 focus:outline-none">View</button>
+                            </a>
+                            <a href="/project/delete/{{$project->id}}">
+                                <button type="button"
+                                    class="bg-red-500 text-gray-200 rounded hover:bg-red-400 px-4 py-2 focus:outline-none">Delete</button>
+                            </a>
+                            <a href="/project/settings/{{$project->id}}">
+                                <button type="button"
+                                    class="bg-gray-300 text-gray-900 rounded hover:bg-grey-400 px-4 py-2 focus:outline-none">Settings</button>
+                            </a>
+                        </td>
                     </tr>
-
-                    <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
-
-                    <tr>
-                        <td>USC</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                    </tr>
+                    @endforeach
                 </tbody>
-
             </table>
-
-
         </div>
     </div>
 </div>
