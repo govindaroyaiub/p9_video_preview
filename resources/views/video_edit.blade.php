@@ -11,31 +11,31 @@
     <div class="flex -mx-4">
         @include('sidebar')
         <div class="w-3/4 mx-4">
-            <h3 class="text-xl font-semibold tracking-wide">Add Video</h3>
+            <h3 class="text-xl font-semibold tracking-wide">Edit Video</h3>
             <br>
-            <form method="POST" action="/project/addon/{{ $main_project_id }}" enctype="multipart/form-data">
+            <form method="POST" action="/project/addon/{{ $sub_project_id }}" enctype="multipart/form-data">
                 @csrf
                 <label class="text-primary font-light">Advertising Format</label><br>
                 <select name="size_id"
                     class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required>
                     <option value="0" class="py-2">Select Size</option>
                     @foreach($size_list as $size)
-                    <option value="{{ $size->id }}" class="py-2">{{ $size->name }} (
+                    <option value="{{ $size->id }}" @if($sub_project_info['size_id'] == $size->id) selected @else '' @endif) class="py-2">{{ $size->name }} (
                         {{ $size->width }}x{{ $size->height }} )</option>
                     @endforeach
                 </select>
 
                 <div class="flex mb-4">
-                    <input type='text' placeholder="Enter Codec" name="codec"
+                    <input type='text' placeholder="Enter Codec" name="codec" value="{{ $sub_project_info['codec'] }}"
                         class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
-                    <input type='text' placeholder="Enter Aspect Ratio" name="aspect_ratio"
+                    <input type='text' placeholder="Enter Aspect Ratio" name="aspect_ratio" value="{{ $sub_project_info['aspect_ratio'] }}"
                         class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 </div>
 
                 <div class="flex mb-4">
-                    <input type='text' placeholder="Enter Frame Per Second" name="fps"
+                    <input type='text' placeholder="Enter Frame Per Second" name="fps" value="{{ $sub_project_info['fps'] }}"
                         class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
-                    <input type='text' placeholder="Enter Video Size" name="size"
+                    <input type='text' placeholder="Enter Video Size" name="size" value="{{ $sub_project_info['size'] }}"
                         class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 </div>
 

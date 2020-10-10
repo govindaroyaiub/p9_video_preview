@@ -157,6 +157,15 @@ class HomeController extends Controller
         return redirect('/project/view/'.$main_project_id);
     }
 
+    public function video_edit($id)
+    {
+        $sub_project_id = $id;
+        $sub_project_info = SubProject::where('id', $id)->first();
+        $logo_list = Logo::get();
+        $size_list = Sizes::orderBy('width', 'DESC')->get();
+        return view('video_edit', compact('sub_project_info', 'logo_list', 'size_list', 'sub_project_id'));
+    }
+
     public function video_delete($id)
     {
         $sub_project_info = SubProject::where('id', $id)->first();

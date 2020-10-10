@@ -42,3 +42,4 @@ Route::get('/sizes/delete/{id}', 'HomeController@size_delete')->name('size_delet
 
 // /video/edit/{{ $project->id }}
 Route::get('/video/delete/{id}', 'HomeController@video_delete')->name('video_delete');
+Route::get('/video/edit/{id}', 'HomeController@video_edit')->name('video_edit');
