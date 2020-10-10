@@ -12,6 +12,7 @@
         @include('sidebar')
         <div class="w-3/4 mx-4">
             <h3 class="text-xl font-semibold tracking-wide">Edit Video</h3>
+            <h3 class="text-xl font-semibold tracking-wide text-red-500">Just Edit What You Need to Edit Or Replace The Assets</h3>
             <br>
             <form method="POST" action="/project/addon/{{ $sub_project_id }}" enctype="multipart/form-data">
                 @csrf
@@ -51,7 +52,7 @@
                 <div class="flex mb-4">
                     <button type="submit"
                         class="w-1/3 mt-2 mb-6 bg-blue-600 text-gray-200 text-lg rounded hover:bg-blue-500 px-6 py-3 focus:outline-none">Create</button>
-                    <button type="button" onclick="window.location.href='/project';"
+                    <button type="button" onclick="window.location.href='/project/view/{{ $sub_project_info['project_id'] }}';"
                         class="w-1/3 mt-2 mb-6 bg-red-600 text-gray-100 text-lg rounded hover:bg-red-500 px-6 py-3 focus:outline-none">Back</button>
                 </div>
             </form>

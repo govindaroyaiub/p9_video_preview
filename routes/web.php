@@ -39,7 +39,5 @@ Route::get('/sizes/add', 'HomeController@size_add')->name('size_add');
 Route::post('/sizes/add', 'HomeController@size_add_post')->name('size_add_post');
 Route::get('/sizes/delete/{id}', 'HomeController@size_delete')->name('size_delete');
 
-
-// /video/edit/{{ $project->id }}
-Route::get('/video/delete/{id}', 'HomeController@video_delete')->name('video_delete');
 Route::get('/video/edit/{id}', 'HomeController@video_edit')->name('video_edit');
+Route::get('/video/delete/{id}', 'HomeController@video_delete')->name('video_delete');
