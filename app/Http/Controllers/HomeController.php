@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\MainProject;
 use App\SubProject;
@@ -426,5 +427,21 @@ class HomeController extends Controller
         $size_info = Sizes::where('id', $id)->first();
         Sizes::where('id', $id)->delete();
         return redirect('/sizes')->with('danger', $size_info['name'].' ('.$size_info['width'].'X'.$size_info['height'].')'.' has been deleted!');
+    }
+
+    public function add_user()
+    {
+        return view('add_user');
+    }
+
+    public function add_user_post(Request $request)
+    {
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make('password');
+        $user->save();
+
+        return redirect('/home')->with('success', 'User: '.$request->name.' '.'Email: '.$request->email.' '.'Password: password, has been created!');
     }
 }

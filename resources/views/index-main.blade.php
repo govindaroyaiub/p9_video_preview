@@ -92,6 +92,7 @@
                                         type="video/mp4" />
                             </video>
                         </div>
+                        
                         <div class="md:flex">
                             <a href="{{ asset('/banner_videos/'.'/'.$project->video_path) }}"
                                 class="color-primary underline flex mt-4" download>Download Video

@@ -47,6 +47,7 @@
                                 <button type="button"
                                     class="bg-gray-300 text-gray-900 rounded hover:bg-grey-400 px-4 py-2 focus:outline-none">Edit</button>
                             </a>
+                            
                             <a href="/project/delete/{{$project->id}}">
                                 <button type="button"
                                     class="bg-red-500 text-gray-200 rounded hover:bg-red-400 px-4 py-2 focus:outline-none">Delete</button>

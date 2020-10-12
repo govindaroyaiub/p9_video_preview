@@ -11,6 +11,7 @@
         <div class="flex -mx-4">
             @include('sidebar') 
             <div class="w-3/4 mx-4">
+                @include('alert')
                 <h3 class="text-xl font-semibold tracking-wide">{{ __('Dashboard') }}</h3>
 
                 <div class="grid grid-cols-3 gap-8 mt-4">
