@@ -35,10 +35,10 @@
                 <tbody>
                     @foreach($project_list as $project)
                     <tr style="text-align: center;">
-                        <td>{{ $i++ }}</td>
-                        <td>{{ $project->name }}</td>
-                        <td>{{ $project->client_name }}</td>
-                        <td>
+                        <td class="border px-4 py-2">{{ $i++ }}</td>
+                        <td class="border px-4 py-2">{{ $project->name }}</td>
+                        <td class="border px-4 py-2">{{ $project->client_name }}</td>
+                        <td class="border px-4 py-2">
                             <a href="/project/view/{{$project->id}}" target="_blank">
                                 <button type="button"
                                     class="bg-green-500 text-gray-200 rounded hover:bg-green-400 px-4 py-2 focus:outline-none">View</button>
