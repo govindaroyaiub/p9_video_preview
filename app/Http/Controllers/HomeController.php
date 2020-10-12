@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\MainProject;
 use App\SubProject;
@@ -443,5 +444,15 @@ class HomeController extends Controller
         $user->save();
 
         return redirect('/home')->with('success', 'User: '.$request->name.' '.'Email: '.$request->email.' '.'Password: password, has been created!');
+    }
+
+    public function change_password()
+    {
+        return view('change_password');
+    }
+
+    public function change_password_post(Request $request)
+    {
+        dd(Auth::user()->id);
     }
 }
