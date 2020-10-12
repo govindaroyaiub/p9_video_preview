@@ -16,6 +16,10 @@
             <br>
             <form method="POST" action="/video/edit/{{ $sub_project_id }}" enctype="multipart/form-data">
                 @csrf
+                <label class="text-primary font-light">Video Title (example: Pre-Roll/Bumper Interstitial for Youtube)</label><br>
+                <input type='text' placeholder="Enter Video Title" name="title" value="{{ $sub_project_info['title'] }}"
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
+                    <br>
                 <label class="text-primary font-light">Advertising Format</label><br>
                 <select name="size_id"
                     class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required>
@@ -47,11 +51,11 @@
 
                 <label class="text-primary font-light">Select Video File</label><br>
                 <input type="file" name="video"
-                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required>
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary">
 
                 <div class="flex mb-4">
                     <button type="submit"
-                        class="w-1/3 mt-2 mb-6 bg-blue-600 text-gray-200 text-lg rounded hover:bg-blue-500 px-6 py-3 focus:outline-none">Create</button>
+                        class="w-1/3 mt-2 mb-6 bg-blue-600 text-gray-200 text-lg rounded hover:bg-blue-500 px-6 py-3 focus:outline-none">Edit</button>
                     <button type="button" onclick="window.location.href='/project/view/{{ $sub_project_info['project_id'] }}';"
                         class="w-1/3 mt-2 mb-6 bg-red-600 text-gray-100 text-lg rounded hover:bg-red-500 px-6 py-3 focus:outline-none">Back</button>
                 </div>

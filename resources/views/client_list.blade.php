@@ -35,12 +35,12 @@
                 <tbody>
                 @foreach($logo_list as $logo)
                     <tr align="center">
-                        <td>{{ $i++ }}</td>
-                        <td>{{ $logo->name }}</td>
-                        <td>
+                        <td class="border px-4 py-2"{{ $i++ }}</td>
+                        <td class="border px-4 py-2">{{ $logo->name }}</td>
+                        <td class="border px-4 py-2">
                             <img src="{{url('/logo_images/').'/'.$logo->path}}" width=200 height=200>
                         </td>
-                        <td>
+                        <td class="border px-4 py-2">
                         <a href="/logo/delete/{{$logo->id}}">
                             <button type="button"
                                     class="bg-red-500 text-gray-200 rounded hover:bg-red-400 px-4 py-2 focus:outline-none">Delete</button>

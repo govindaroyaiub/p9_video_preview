@@ -16,6 +16,7 @@ class SubProject extends Migration
         Schema::create('sub_project', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('title');
             $table->bigInteger('project_id');
             $table->string('size_id');
             $table->string('codec');

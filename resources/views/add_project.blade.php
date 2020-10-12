@@ -38,6 +38,7 @@
                     </select>
 
                     <br>
+                    <br>
 
                     <label class="text-primary font-light">Select Color (Default Selcted Color is PlanetNine Logo
                         Color)</label><br>
@@ -48,6 +49,12 @@
                     <hr class="w-2/3">
                     <br>
 
+                    <label class="text-primary font-light">Video Title (example: Pre-Roll/Bumper Interstitial for
+                        Youtube)</label><br>
+                    <input type='text' placeholder="Enter Video Title" name="title"
+                           class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary"
+                           required/>
+                    <br>
                     <label class="text-primary font-light">Advertising Format</label><br>
                     <select name="size_id"
                             class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary"
@@ -98,8 +105,8 @@
                             Back
                         </button>
                     </div>
+
                 </form>
             </div>
         </div>
-    </div>
 @endsection

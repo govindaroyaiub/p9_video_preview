@@ -15,6 +15,10 @@
             <br>
             <form method="POST" action="/project/addon/{{ $main_project_id }}" enctype="multipart/form-data">
                 @csrf
+                <label class="text-primary font-light">Video Title (example: Pre-Roll/Bumper Interstitial for Youtube)</label><br>
+                <input type='text' placeholder="Enter Video Title" name="title"
+                    class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
+                    <br>
                 <label class="text-primary font-light">Advertising Format</label><br>
                 <select name="size_id"
                     class="w-2/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required>
@@ -50,7 +54,7 @@
 
                 <div class="flex mb-4">
                     <button type="submit"
-                        class="w-1/3 mt-2 mb-6 bg-blue-600 text-gray-200 text-lg rounded hover:bg-blue-500 px-6 py-3 focus:outline-none">Create</button>
+                        class="w-1/3 mt-2 mb-6 bg-blue-600 text-gray-200 text-lg rounded hover:bg-blue-500 px-6 py-3 focus:outline-none">Add</button>
                     <button type="button" onclick="window.location.href='/project/view/{{ $main_project_id }}';"
                         class="w-1/3 mt-2 mb-6 bg-red-600 text-gray-100 text-lg rounded hover:bg-red-500 px-6 py-3 focus:outline-none">Back</button>
                 </div>

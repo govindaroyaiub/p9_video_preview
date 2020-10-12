@@ -31,14 +31,27 @@
                     </div>
                 </div>
 
-                <h3 class="text-xl font-semibold tracking-wide mt-4">Users</h3>
-                <table class="table w-full">
+                <br>
+                <br>
+                
+                <div class="flex justify-between w-full">
+                    <h3 class="text-xl font-semibold tracking-wide">Users</h3>
+                    <a href="/user/add">
+                        <button type="button"
+                            class="leading-tight bg-primary text-gray-200 rounded px-6 py-3 text-sm focus:outline-none focus:border-white">Add
+                            User</Button>
+                    </a>
+                </div>
+
+                <br>
+
+                <table id="datatable" class="stripe hover table w-full" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                     <tr>
                         <th class="bg-gray-200 px-4 py-2">No.</th>
                         <th class="bg-gray-200 px-4 py-2">Name</th>
                         <th class="bg-gray-200 px-4 py-2">Email</th>
-                        <th class="bg-gray-200 px-4 py-2">Role</th>
+                        <th class="bg-gray-200 px-4 py-2">Action</th>
                     </tr>
                     </thead>
                     <?php $i=1; ?>
@@ -48,7 +61,7 @@
                             <td class="border px-4 py-2">{{$i++}}</td>
                             <td class="border px-4 py-2">{{ $user->name }}</td>
                             <td class="border px-4 py-2">{{ $user->email }}</td>
-                            <td class="border px-4 py-2">Admin</td>
+                            <td class="border px-4 py-2">Action</td>
                         </tr>
                     @endforeach
                     </tbody>

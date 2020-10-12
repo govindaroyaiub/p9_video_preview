@@ -35,10 +35,10 @@
                 <tbody>
                     @foreach( $size_list as $size )
                     <tr style="text-align: center;">
-                        <td>{{ $i++ }}</td>
-                        <td>{{ $size->name }}</td>
-                        <td>{{ $size->width }}x{{ $size->height }}</td>
-                        <td>
+                        <td class="border px-4 py-2">{{ $i++ }}</td>
+                        <td class="border px-4 py-2">{{ $size->name }}</td>
+                        <td class="border px-4 py-2">{{ $size->width }}x{{ $size->height }}</td>
+                        <td class="border px-4 py-2">
                             <a href="/sizes/delete/{{$size->id}}">
                                 <button type="button"
                                     class="bg-red-500 text-gray-200 rounded hover:bg-red-400 px-4 py-2 focus:outline-none">Delete</button>

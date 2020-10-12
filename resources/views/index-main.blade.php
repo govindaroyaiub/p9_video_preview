@@ -82,7 +82,7 @@
                 <div class="w-3/4 mx-8">
                     <div class="videos">
                         <h2 class="text-xl font-semibold mb-4">
-                            Confusing text!
+                            {{ $project->title }}
                         </h2>
                         <div class="video-container aspect-ratio-16-9">
                             <video class="video" playsinline controls data-poster="poster.jpg" @if($project->width >=
@@ -152,7 +152,7 @@
                         <div class="companion-banner">
                             <h2 class="text-xl font-semibold mb-4">{{ $project->size_name }}</h2>
 
-                            <img class="block" src="{{ '/images/companion-banner.png'  }}" alt="companion banner">
+                            <img class="block" src="{{ asset('/poster_images/'.'/'.$project->poster_path) }}" alt="companion banner">
 
                             <a href="{{ asset('/poster_images/'.'/'.$project->poster_path) }}"
                                 class="color-primary underline flex mt-2" download>Download

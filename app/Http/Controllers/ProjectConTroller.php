@@ -33,6 +33,7 @@ class ProjectConTroller extends Controller
                                         ->select(
                                             'sub_project.id',
                                             'sub_project.name as sub_name',
+                                            'sub_project.title',
                                             'sub_project.codec',
                                             'sub_project.aspect_ratio',
                                             'sub_project.fps',
