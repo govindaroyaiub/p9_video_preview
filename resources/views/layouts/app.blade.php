@@ -87,9 +87,11 @@
 
                     <button @click="logout = true" class="focus:outline-none">{{ Auth::user()->name }}</button>
 
-                    <div class="absolute bg-white shadow-md rounded-lg p-6" x-show="logout"
-                         @click.away="logout = false">
-
+                    <div class="absolute bg-white shadow-md rounded-lg p-6" x-show="logout" @click.away="logout = false">
+						<a href="/change-password">
+						Change Password
+						</a>
+						<hr>
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

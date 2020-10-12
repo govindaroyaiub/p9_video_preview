@@ -24,3 +24,8 @@
     width: 300px;
     height: auto;
 }
+
+
+.main {
+    min-height: 80vh;
+}

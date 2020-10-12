@@ -14,5 +14,5 @@
         </li>
     </ul>
 
-    <div class="text-center text-sm text-gray-700 mb-2">&copy; Planetnine - 2020</div>
+    <div class="text-center text-sm text-gray-700 mb-2">&copy; Planetnine - <?= Date('Y') ?></div>
 </div>
