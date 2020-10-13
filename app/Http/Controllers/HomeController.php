@@ -42,7 +42,7 @@ class HomeController extends Controller
         {
             $size_text = $video->size;
             $size_number = trim($size_text," MB");
-            
+
             array_push($total_size, intval($size_number));
         }
 
@@ -65,6 +65,8 @@ class HomeController extends Controller
 
     public function project_add_post(Request $request)
     {
+//        dd($request->all());
+
         $project_name = str_replace(" ","_", $request->project_name);
         $main_project = new MainProject;
         $main_project->name = $project_name;
@@ -85,7 +87,7 @@ class HomeController extends Controller
 
         if($request->has('poster'))
         {
-            $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
+            $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();
             $request->poster->move(public_path('poster_images'), $poster_name);
         }
         else
@@ -93,9 +95,9 @@ class HomeController extends Controller
             $poster_name = NULL;
         }
 
-        $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();  
+        $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
         $request->video->move(public_path('banner_videos'), $video_name);
-       
+
         $sub_project = new SubProject;
         $sub_project->name = $sub_project_name;
         $sub_project->title = $request->title;
@@ -125,7 +127,7 @@ class HomeController extends Controller
         $main_project_id = $id;
         $project_name = str_replace(" ","_", $request->project_name);
         $sub_projects = SubProject::where('project_id', $main_project_id)->get();
-        
+
         $main_project_details = [
             'name' => $project_name,
             'client_name' => $request->client_name,
@@ -140,11 +142,11 @@ class HomeController extends Controller
         foreach($sub_projects as $sub_project)
         {
             $size_info = Sizes::where('id', $sub_project['size_id'])->first();
-            
+
             $old_sub_project_name = $sub_project->name;
             $old_poster_path = $sub_project->poster_path;
             $old_video_path = $sub_project->video_path;
-         
+
             $new_sub_project_name = $project_name.'_'.$size_info['width'].'x'.$size_info['height'];
 
             if($old_poster_path != NULL)
@@ -167,7 +169,7 @@ class HomeController extends Controller
                 'poster_path' => $new_poster_path,
                 'video_path' => $new_video_path
             ];
-            
+
             SubProject::where('id', $sub_project->id)->update($new_sub_details);
         }
         return redirect('/project')->with('success', $project_name.' has been updated!');
@@ -195,7 +197,7 @@ class HomeController extends Controller
 
         if($request->has('poster'))
         {
-            $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
+            $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();
             $request->poster->move(public_path('poster_images'), $poster_name);
         }
         else
@@ -203,9 +205,9 @@ class HomeController extends Controller
             $poster_name = NULL;
         }
 
-        $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();  
+        $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
         $request->video->move(public_path('banner_videos'), $video_name);
-       
+
         $sub_project = new SubProject;
         $sub_project->name = $sub_project_name;
         $sub_project->title = $request->title;
@@ -243,34 +245,34 @@ class HomeController extends Controller
         {
             if($sub_project_info['poster_path'] == NULL)
             {
-                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
+                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();
                 $request->poster->move(public_path('poster_images'), $poster_name);
             }
             else
             {
-                $poster_path = public_path('poster_images/').$sub_project_info['poster_path']; 
+                $poster_path = public_path('poster_images/').$sub_project_info['poster_path'];
                 if (file_exists($poster_path)) {
                     @unlink($poster_path);
                 }
                 //then add the new one
-                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
+                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();
                 $request->poster->move(public_path('poster_images'), $poster_name);
             }
-            $video_path = public_path('banner_videos/').$sub_project_info['video_path']; 
+            $video_path = public_path('banner_videos/').$sub_project_info['video_path'];
             if (file_exists($video_path)) {
                 @unlink($video_path);
             }
-            $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();  
+            $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
             $request->video->move(public_path('banner_videos'), $video_name);
         }
         else if($request->poster == NULL && $request->video != NULL)
         {
             $poster_name = NULL;
-            $video_path = public_path('banner_videos/').$sub_project_info['video_path']; 
+            $video_path = public_path('banner_videos/').$sub_project_info['video_path'];
             if (file_exists($video_path)) {
                 @unlink($video_path);
             }
-            $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();  
+            $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
             $request->video->move(public_path('banner_videos'), $video_name);
         }
         else if($request->poster != NULL && $request->video == NULL)
@@ -278,17 +280,17 @@ class HomeController extends Controller
             $video_name = $sub_project_info['video_path'];
             if($sub_project_info['poster_path'] == NULL)
             {
-                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
+                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();
                 $request->poster->move(public_path('poster_images'), $poster_name);
             }
             else
             {
-                $poster_path = public_path('poster_images/').$sub_project_info['poster_path']; 
+                $poster_path = public_path('poster_images/').$sub_project_info['poster_path'];
                 if (file_exists($poster_path)) {
                     @unlink($poster_path);
                 }
                 //then add the new one
-                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();  
+                $poster_name = $sub_project_name.'_'.time().'.'.$request->poster->extension();
                 $request->poster->move(public_path('poster_images'), $poster_name);
             }
         }
@@ -311,7 +313,7 @@ class HomeController extends Controller
 
         SubProject::where('id', $sub_project_id)->update($sub_project_details);
         return redirect('/project/view/'.$main_project_info['id']);
-        
+
     }
 
     public function video_delete($id)
@@ -320,13 +322,13 @@ class HomeController extends Controller
 
         if($sub_project_info['poster_path'] != NULL)
         {
-            $poster_path = public_path('poster_images/').$sub_project_info['poster_path']; 
+            $poster_path = public_path('poster_images/').$sub_project_info['poster_path'];
             if (file_exists($poster_path)) {
                 @unlink($poster_path);
             }
         }
-        
-        $video_path = public_path('banner_videos/').$sub_project_info['video_path']; 
+
+        $video_path = public_path('banner_videos/').$sub_project_info['video_path'];
         if (file_exists($video_path)) {
             @unlink($video_path);
         }
@@ -344,12 +346,12 @@ class HomeController extends Controller
         {
             if($sub_project->poster_path != NULL)
             {
-                $poster_path = public_path('poster_images/').$sub_project->poster_path; 
+                $poster_path = public_path('poster_images/').$sub_project->poster_path;
                 if (file_exists($poster_path)) {
                     @unlink($poster_path);
                 }
             }
-            $video_path = public_path('banner_videos/').$sub_project->video_path; 
+            $video_path = public_path('banner_videos/').$sub_project->video_path;
             if (file_exists($video_path)) {
                 @unlink($video_path);
             }
@@ -378,7 +380,7 @@ class HomeController extends Controller
             'logo_file' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-        $imageName = $request->company_name.'_'.time().'.'.$request->logo_file->extension();  
+        $imageName = $request->company_name.'_'.time().'.'.$request->logo_file->extension();
         $request->logo_file->move(public_path('logo_images'), $imageName);
 
         $logo = new Logo;
@@ -394,7 +396,7 @@ class HomeController extends Controller
         $logo_info = Logo::where('id', $id)->first();
         Logo::where('id', $id)->delete();
 
-        $image_path = public_path('logo_images/').$logo_info['path']; 
+        $image_path = public_path('logo_images/').$logo_info['path'];
         if (file_exists($image_path)) {
             @unlink($image_path);
         }
@@ -419,7 +421,7 @@ class HomeController extends Controller
         $size->width = $request->width;
         $size->height = $request->height;
         $size->save();
-        
+
         return redirect('/sizes')->with('success', 'Size Added Successfully!');
     }
 
