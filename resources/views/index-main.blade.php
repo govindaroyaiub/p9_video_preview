@@ -54,11 +54,10 @@
             setInterval(function()
             {
                 list_comments();
-            }, 3000);
+            }, 6000);
             $('.submit').click(function(){
                 var comment = $('.comment').val();
                 show_loader();
-
                 $.ajax({
                     url: '/store_comments/'+{{ $main_project_id }},
                     data: {
@@ -77,8 +76,8 @@
         function show_loader() 
         {
             $("#comment_button").hide();
+            setTimeout(hide_loader, 4500);
             $(".loader").show();
-            setTimeout(hide_loader, 4800);
         }
         function hide_loader()
         {
