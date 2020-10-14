@@ -129,7 +129,7 @@
 
         .btn.btn-primary {
             border-radius: 5px;
-            background: #17bebb;
+            background: #4c4f6d;
             color: #ffffff;
         }
 
@@ -301,7 +301,7 @@
                                         <h3 class="comment" style="text-decoration: underline; font-weight: bold;">Comment</h3>
                                         <br>
                                         <h3 class="comment">{{ $details['comment'] }}</h3>
-                                        <p><a href="#" class="btn btn-primary">View Project</a></p>
+                                        <p><a href="#" class="btn btn-primary">View</a></p>
                                     </div>
                                 </td>
                             </tr>

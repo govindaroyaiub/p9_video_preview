@@ -9,10 +9,33 @@
     <title>{{ $main_project_info['name'] }}</title>
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <style>
+        .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #4c4f6d;
+        width: 80px;
+        height: 80px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        margin: 0 auto!important;
+        }
+
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
         function list_comments()
         {
+            $(".loader").hide();
             $.ajax({
                 url: '/get_comments/'+{{ $main_project_id }},
                 type: 'get',
@@ -34,6 +57,7 @@
             }, 6000);
             $('.submit').click(function(){
                 var comment = $('.comment').val();
+                show_loader();
 
                 $.ajax({
                     url: '/store_comments/'+{{ $main_project_id }},
@@ -50,6 +74,15 @@
                 })
             })
         })
+        function show_loader() 
+        {
+            $(".loader").show();
+            setTimeout(hide_loader, 5500);
+        }
+        function hide_loader()
+        {
+            $(".loader").hide();
+        }
     </script>
 </head>
 
@@ -101,8 +134,11 @@
                         <textarea name="comment_content" id="comment" cols="5" rows="5"
                             class="comment w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
                             <br>
-                        <a href="javascript:void(0)" id="comment_button" class="submit bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Comment
+                        <a href="javascript:void(0)" id="comment_button" class="submit bg-primary px-20 py-2 rounded-lg w-full text-white mt-2">Comment
                         </a>
+                        <br>
+                        <br>
+                        <div class="loader"></div>
                     </div>
                 </div>
             </div>
