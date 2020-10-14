@@ -135,38 +135,6 @@
 
         @section('script')
             <script>
-                var upload = document.querySelector('.drag-n-drop');
 
-                function onFile() {
-                    var me = this,
-                        file = upload.files[0],
-                        name = file.name.replace(/\.[^/.]+$/, '');
-
-                    if (file.type === '' || file.type === 'video/mp4') {
-                        if (file.size < (500000 * 1024)) {
-                            upload.parentNode.className = 'drag-n-drop-area uploading';
-                        } else {
-                            window.alert('File size is too large, please ensure you are uploading a file of less than 3MB');
-                        }
-                    } else {
-                        window.alert('File type ' + file.type + ' not supported');
-                    }
-                }
-
-                upload.addEventListener('dragenter', function (e) {
-                    upload.parentNode.className = 'drag-n-drop-area dragging';
-                }, false);
-
-                upload.addEventListener('dragleave', function (e) {
-                    upload.parentNode.className = 'drag-n-drop-area';
-                }, false);
-
-                upload.addEventListener('dragdrop', function (e) {
-                    onFile();
-                }, false);
-
-                upload.addEventListener('change', function (e) {
-                    onFile();
-                }, false);
             </script>
 @endsection
