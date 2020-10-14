@@ -245,13 +245,7 @@
 @else
 
 @endif
-
-<<<<<<< HEAD
-    <script src="{{ asset('/js/app.js') }}"></script>
-
-=======
 <script src="{{ asset('/js/app.js') }}"></script>
->>>>>>> e467194c52ecc0e944b45b9a6cc21f69720ddf95
 </body>
 
 </html>
