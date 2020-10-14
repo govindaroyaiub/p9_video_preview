@@ -54,7 +54,7 @@
 </head>
 
 <body class="font-body">
-<header class="header relative border-b border-primary">
+<header class="header relative border-b" style="border-color: {{ $main_project_info['color'] }}">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <div>
             <h3>Client Name: <span class="font-semibold">{{ $main_project_info['client_name'] }}</span></h3>
@@ -231,7 +231,7 @@
 </main>
 
 @if($main_project_info->is_footer == 1)
-    <footer class="footer bg-primary">
+    <footer class="footer" style="background-color: {{ $main_project_info['color'] }}">
         <div class="container mx-auto px-4 py-3 text-white text-center">&copy; All Right Reserved. <a
                 href="https://www.planetnine.com/" target="_blank" style="text-decoration: underline;">Planet Nine</a>
             - <?= Date('Y') ?></div>
