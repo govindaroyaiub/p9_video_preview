@@ -54,7 +54,7 @@
             setInterval(function()
             {
                 list_comments();
-            }, 6000);
+            }, 3000);
             $('.submit').click(function(){
                 var comment = $('.comment').val();
                 show_loader();
@@ -76,12 +76,14 @@
         })
         function show_loader() 
         {
+            $("#comment_button").hide();
             $(".loader").show();
-            setTimeout(hide_loader, 5500);
+            setTimeout(hide_loader, 4800);
         }
         function hide_loader()
         {
             $(".loader").hide();
+            $("#comment_button").show();
         }
     </script>
 </head>
@@ -136,7 +138,6 @@
                             <br>
                         <a href="javascript:void(0)" id="comment_button" class="submit bg-primary px-20 py-2 rounded-lg w-full text-white mt-2">Comment
                         </a>
-                        <br>
                         <br>
                         <div class="loader"></div>
                     </div>
