@@ -11,6 +11,7 @@
     <div class="flex -mx-4">
         @include('sidebar')
         <div class="w-3/4 mx-4">
+        @include('alert')
             <h3 class="text-xl font-semibold tracking-wide">Change Password</h3>
             <br>
             <form method="POST" action="/change-password" enctype="multipart/form-data">

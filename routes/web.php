@@ -21,6 +21,7 @@ Route::get('/index', function()
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/user/delete/{id}', 'HomeController@delete_user')->name('delete_user');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/add', 'HomeController@add_user')->name('add_user');
 Route::post('/user/add', 'HomeController@add_user_post')->name('add_user_post');

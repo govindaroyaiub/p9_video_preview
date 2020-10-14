@@ -445,7 +445,7 @@ class HomeController extends Controller
         $user->password = Hash::make('password');
         $user->save();
 
-        return redirect('/home')->with('success', 'User: '.$request->name.' '.'Email: '.$request->email.' '.'Password: password, has been created!');
+        return redirect('/home')->with('create-user', 'User: '.$request->name.' '.'Email: '.$request->email.' '.'Password: password, has been created!');
     }
 
     public function change_password()
@@ -463,7 +463,26 @@ class HomeController extends Controller
 
         if (Hash::check($current_password, Auth::user()->password)) 
         {
-            dd('true');    
+            if($new_password == $repeat_password)
+            {
+                User::where('id', Auth::user()->id)->update(['password' => Hash::make($new_password)]);
+                Auth::logout();
+                return redirect('/login')->with('info-password', 'Password has been changed. Please login again. Thank you!');
+            }
+            else
+            {
+                return back()->with('danger', 'New Password and Repeat Password do not match! You high?');
+            }
+        }
+        else
+        {
+            return back()->with('info', 'Current Password is not matched! Are you high?');
         }    
+    }
+
+    public function delete_user($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect('/')->with('delete-user', 'User has been deleted');
     }
 }
