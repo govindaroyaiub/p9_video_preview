@@ -9,6 +9,7 @@ use App\SubProject;
 use App\Comments;
 use App\Sizes;
 use App\Logo;
+use \App\Mail\SendMail;
 
 class ProjectConTroller extends Controller
 {
@@ -60,15 +61,38 @@ class ProjectConTroller extends Controller
         ));
     }
 
-    public function comment($id, Request $request)
+    public function store_comments(Request $request, $id)
     {
         $project_id = $id;
+        $project_info = MainProject::where('id', $id)->first();
+        $project_name = str_replace("_"," ", $project_info['name']);
 
         $comment = new Comments;
-        $comment->comment = $request->comment;
         $comment->project_id = $project_id;
+        $comment->comment = $request->comment;
         $comment->save();
 
-        return redirect('/project/view/'.$project_id);
+        $details = [
+            'title' => $project_name,
+            'comment' => $request->comment,
+            'id' => $project_id
+        ];
+
+        $to = array('govinda@planetnine.com', 'ebnsina@planetnine.com', 'maarten@planetnine.com', 'rohit@planetnine.com');
+
+        \Mail::to($to)->send(new SendMail($details));
+    }
+
+    public function get_comments($id)
+    {
+        $result = Comments::where('project_id', $id)->orderBy('created_at', 'DESC')->get();
+        $result_count = Comments::where('project_id', $id)->get()->count();
+        if($result_count > 0)
+        {
+            foreach($result as $row)
+            {
+                echo '<textarea cols="5" rows="3" class="w-full bg-gray-300 border border-gray-600 focus:outline-none rounded-lg" readonly>'.$row->comment.'</textarea>';
+            }
+        }
     }
 }

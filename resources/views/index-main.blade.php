@@ -9,6 +9,48 @@
     <title>{{ $main_project_info['name'] }}</title>
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function list_comments()
+        {
+            $.ajax({
+                url: '/get_comments/'+{{ $main_project_id }},
+                type: 'get',
+                success: function(result)
+                {
+                    if(result)
+                    {
+                        $("#not_needed").css("display", "none");
+                        $('.comment_listing').html(result);
+                    }
+                }
+            })
+        }
+        $(function(){
+            list_comments();
+            setInterval(function()
+            {
+                list_comments();
+            }, 6000);
+            $('.submit').click(function(){
+                var comment = $('.comment').val();
+
+                $.ajax({
+                    url: '/store_comments/'+{{ $main_project_id }},
+                    data: {
+                        comment: comment,
+                        _token: '{{csrf_token()}}'
+                    },
+                    type: 'post',
+                    success: function()
+                    {
+                        $('.comment').val('').change();
+                        list_comments();
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 
 <body class="font-body">
@@ -35,31 +77,25 @@
                     </svg>
 
                     <div x-show="commentModal" @click.away="commentModal = false"
-                        class="h-screen bg-white shadow absolute top-0 right-0 w-64 p-4 rounded-lg">
+                        class="h-screen bg-white shadow absolute top-0 right-0 w-64 p-4 rounded-lg" id="comment_modal">
                         <svg class="w-8 h-8 text-red-400 font-semibold" @click="commentModal = false" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
 
-                        @if($comments_count == 0)
-                        <p class="my-4">If you like this video feel free to feedback us!</p>
-                        @else
-                        <p class="my-4" style="text-decoration: underline;">Comments:</p>
-                        @foreach($comments as $comment)
-                        <textarea name="comment" id="comment" cols="5" rows="3"
-                            class="w-full border bg-gray-300  border-gray-600 focus:outline-none rounded-lg"
-                            readonly>{{ $comment->comment }}</textarea>
-                        <br>
-                        @endforeach
-                        @endif
-                        <form action="/comment/{{ $main_project_id }}" method="POST">
-                            @csrf
-                            <textarea name="comment" id="comment" cols="5" rows="5"
-                                class="w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
-                            <button type="submit" class="bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Comment
-                            </button>
-                        </form>
+                        <div id="not_needed">
+                            <p class="my-4">If you like this video feel free to feedback us!</p>
+                        </div>
+                        <div>
+                            <p class="my-4" style="text-decoration: underline;">Comments:</p>
+                            <div class="comment_listing">
+                        </div>
+                        <textarea name="comment_content" id="comment" cols="5" rows="5"
+                            class="comment w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
+                            <br>
+                        <a href="javascript:void(0)" id="comment_button" class="submit bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Comment
+                        </a>
                     </div>
                 </div>
             </div>
@@ -183,6 +219,7 @@
     @endif
 
     <script src="{{ asset('/js/app.js') }}"></script>
+
 </body>
 
 </html>

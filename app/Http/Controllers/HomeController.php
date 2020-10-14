@@ -65,6 +65,7 @@ class HomeController extends Controller
 
     public function project_add_post(Request $request)
     {
+        
         $project_name = str_replace(" ","_", $request->project_name);
         $main_project = new MainProject;
         $main_project->name = $project_name;
