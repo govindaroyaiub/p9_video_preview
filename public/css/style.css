@@ -24,3 +24,32 @@
     width: 300px;
     height: auto;
 }
+
+
+.main {
+    min-height: 89vh;
+}
+
+.drag-n-drop-area {
+    padding: 3em;
+    position: relative;
+    transition: all .2s;
+}
+
+.drag-n-drop-area:hover,
+.drag-n-drop-area.dragging,
+.drag-n-drop-area.uploading {
+    opacity: 1;
+}
+
+.drag-n-drop-area.uploading {
+    border: dashed 1px #34495e;
+    border-radius: 1rem;
+}
+
+.drag-n-drop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

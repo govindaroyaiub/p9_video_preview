@@ -1,14 +1,18 @@
 <div class="w-1/6 mx-4 bg-gray-200 rounded-lg flex flex-col justify-between" style="min-height: 87vh;">
     <ul class="space-y-2">
-        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/">Dashboard</a>
+        <li class="{{ request()->is('/') ? 'bg-primary text-white rounded-lg' : '' }}"><a
+                class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/">Dashboard</a>
         </li>
-        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Projects</a>
+        <li class="{{ request()->is('project') ? 'bg-primary text-white rounded-lg' : '' }}"><a
+                class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Projects</a>
         </li>
-        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/logo">Logos</a>
+        <li class="{{ request()->is('logo') ? 'bg-primary text-white rounded-lg' : '' }}"><a
+                class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/logo">Logos</a>
         </li>
-        <li><a class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/sizes">Sizes</a>
+        <li class="{{ request()->is('sizes') ? 'bg-primary text-white rounded-lg' : '' }}"><a
+                class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/sizes">Sizes</a>
         </li>
     </ul>
 
-    <div class="text-center text-sm text-gray-700 mb-2">&copy; Planetnine - 2020</div>
+    <div class="text-center text-sm text-gray-700 mb-2">&copy; Planetnine - <?= Date('Y') ?></div>
 </div>
