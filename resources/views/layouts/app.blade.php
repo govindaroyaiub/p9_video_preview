@@ -133,12 +133,14 @@
     // DND
     var upload = document.querySelector('.drag-n-drop');
 
-    function onFile() {
+    if(upload)
+    {
+        function onFile() {
         var me = this,
             file = upload.files[0],
             name = file.name.replace(/\.[^/.]+$/, '');
 
-        if (file.type === '' || file.type === 'video/mp4') {
+        if (file.type === '' || file.type === 'video/mp4' || file.type === 'image/gif' || file.type === 'image/jpeg' || file.type === 'image/png') {
             if (file.size < (500000 * 1024)) {
                 upload.parentNode.className = 'drag-n-drop-area uploading';
             } else {
@@ -147,23 +149,63 @@
         } else {
             window.alert('File type ' + file.type + ' not supported');
         }
+        }
+
+        upload.addEventListener('dragenter', function (e) {
+            upload.parentNode.className = 'drag-n-drop-area dragging';
+        }, false);
+
+        upload.addEventListener('dragleave', function (e) {
+            upload.parentNode.className = 'drag-n-drop-area';
+        }, false);
+
+        upload.addEventListener('dragdrop', function (e) {
+            onFile();
+        }, false);
+
+        upload.addEventListener('change', function (e) {
+            onFile();
+        }, false);
     }
+</script>
+<script>
+$('#show_password').click(function(e)
+{
+    var current_password = $('#current_password').val().length;
+    var repeat_password = $('#repeat_password').val().length;
+    var new_password = $('#new_password').val().length;
 
-    upload.addEventListener('dragenter', function (e) {
-        upload.parentNode.className = 'drag-n-drop-area dragging';
-    }, false);
-
-    upload.addEventListener('dragleave', function (e) {
-        upload.parentNode.className = 'drag-n-drop-area';
-    }, false);
-
-    upload.addEventListener('dragdrop', function (e) {
-        onFile();
-    }, false);
-
-    upload.addEventListener('change', function (e) {
-        onFile();
-    }, false);
+	if(document.getElementById('show_password').checked)
+    {
+        if(current_password == 0)
+        {
+            alert('Enter Current Password!');
+            e.preventDefault();
+        }
+        if(new_password == 0)
+        {
+            alert('Enter New Password!');
+            e.preventDefault();
+        }
+        if(repeat_password == 0)
+        {
+            alert('Enter Repeat Password!');
+            e.preventDefault();
+        }
+        else
+        {
+            $('#current_password').get(0).type = 'text';
+            $('#new_password').get(0).type = 'text';
+            $('#repeat_password').get(0).type = 'text';
+        }
+    } 
+    else 
+    {
+        $('#current_password').get(0).type = 'password';
+        $('#new_password').get(0).type = 'password';
+        $('#repeat_password').get(0).type = 'password';
+    }
+});
 </script>
 
 
