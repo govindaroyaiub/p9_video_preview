@@ -9,10 +9,33 @@
     <title>{{ $main_project_info['name'] }}</title>
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <style>
+        .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #4c4f6d;
+        width: 80px;
+        height: 80px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        margin: 0 auto!important;
+        }
+
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
         function list_comments()
         {
+            $(".loader").hide();
             $.ajax({
                 url: '/get_comments/'+{{ $main_project_id }},
                 type: 'get',
@@ -34,7 +57,7 @@
             }, 6000);
             $('.submit').click(function(){
                 var comment = $('.comment').val();
-
+                show_loader();
                 $.ajax({
                     url: '/store_comments/'+{{ $main_project_id }},
                     data: {
@@ -50,11 +73,22 @@
                 })
             })
         })
+        function show_loader() 
+        {
+            $("#comment_button").hide();
+            setTimeout(hide_loader, 4500);
+            $(".loader").show();
+        }
+        function hide_loader()
+        {
+            $(".loader").hide();
+            $("#comment_button").show();
+        }
     </script>
 </head>
 
 <body class="font-body">
-<header class="header relative border-b border-primary">
+<header class="header relative border-b" style="border-color: {{ $main_project_info['color'] }}">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <div>
             <h3>Client Name: <span class="font-semibold">{{ $main_project_info['client_name'] }}</span></h3>
@@ -101,8 +135,10 @@
                         <textarea name="comment_content" id="comment" cols="5" rows="5"
                             class="comment w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
                             <br>
-                        <a href="javascript:void(0)" id="comment_button" class="submit bg-primary px-4 py-2 rounded-lg w-full text-white mt-2">Comment
+                        <a href="javascript:void(0)" id="comment_button" class="submit bg-primary px-20 py-2 rounded-lg w-full text-white mt-2">Comment
                         </a>
+                        <br>
+                        <div class="loader"></div>
                     </div>
                 </div>
             </div>
@@ -231,7 +267,7 @@
 </main>
 
 @if($main_project_info->is_footer == 1)
-    <footer class="footer bg-primary">
+    <footer class="footer" style="background-color: {{ $main_project_info['color'] }}">
         <div class="container mx-auto px-4 py-3 text-white text-center">&copy; All Right Reserved. <a
                 href="https://www.planetnine.com/" target="_blank" style="text-decoration: underline;">Planet Nine</a>
             - <?= Date('Y') ?></div>

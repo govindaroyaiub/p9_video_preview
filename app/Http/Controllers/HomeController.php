@@ -480,9 +480,38 @@ class HomeController extends Controller
         }    
     }
 
+    public function edit_user($id)
+    {
+        $user_info = User::where('id', $id)->first();
+        return view('user_edit', compact('user_info', 'id'));
+    }
+
+    public function edit_user_post(Request $request, $id)
+    {
+        $user_info = [
+            'name' => $request->name,
+            'email' => $request->email
+        ];
+        User::where('id', $id)->update($user_info);
+        return back()->with('user-update-success', 'User updated!');
+    }
+
     public function delete_user($id)
     {
         User::where('id', $id)->delete();
         return redirect('/')->with('delete-user', 'User has been deleted');
+    }
+
+    public function change_mail_status(Request $request)
+    {
+        User::where('id', $request->id)->update(['is_send_mail' => $request->status]);
+        if($request->status == 1)
+        {
+            return 'true';
+        }
+        else
+        {
+            return 'false';
+        }
     }
 }
