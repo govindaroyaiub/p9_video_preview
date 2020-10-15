@@ -75,8 +75,7 @@
                     <div class="mb-4">
                         <label class="text-primary font-light block">Advertising Format</label>
                         <select name="size_id"
-                                class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary"
-                        >
+                                class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary">
                             <option value="0" class="py-2">Select Size</option>
                             @foreach($size_list as $size)
                                 <option value="{{ $size->id }}" class="py-2">{{ $size->name }} (

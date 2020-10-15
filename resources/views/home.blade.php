@@ -37,11 +37,13 @@
                 
                 <div class="flex justify-between w-full">
                     <h3 class="text-xl font-semibold tracking-wide">Users</h3>
+                    @if(Auth::user()->is_admin == 1)
                     <a href="/user/add">
                         <button type="button"
                             class="leading-tight bg-primary text-gray-200 rounded px-6 py-3 text-sm focus:outline-none focus:border-white">Add
                             User</Button>
                     </a>
+                    @endif
                 </div>
                 <br>
                 <table id="datatable" class="stripe hover table w-full" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -50,8 +52,11 @@
                         <th class="bg-gray-200 px-4 py-2">No.</th>
                         <th class="bg-gray-200 px-4 py-2">Name</th>
                         <th class="bg-gray-200 px-4 py-2">Email</th>
+                        <th class="bg-gray-200 px-4 py-2">Admin Status</th>
+                        @if(Auth::user()->is_admin == 1)
                         <th class="bg-gray-200 px-4 py-2">Feedback Mail Status</th>
                         <th class="bg-gray-200 px-4 py-2">Action</th>
+                        @endif
                     </tr>
                     </thead>
                     <?php $i=1; ?>
@@ -61,6 +66,12 @@
                             <td class="border px-4 py-2">{{$i++}}</td>
                             <td class="border px-4 py-2">{{ $user->name }}</td>
                             <td class="border px-4 py-2">{{ $user->email }}</td>
+                            @if($user->is_admin == 1)
+                            <td class="border px-4 py-2">Admin</td>
+                            @else
+                            <td class="border px-4 py-2">User</td>
+                            @endif
+                            @if(Auth::user()->is_admin == 1)
                             <td class="border px-4 py-2">
                                 <input type="checkbox" class="switch" id="{{ $user->id }}" @if($user->is_send_mail == 1) checked @endif>
                             </td>
@@ -82,6 +93,7 @@
                                 </button>
                             </a>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

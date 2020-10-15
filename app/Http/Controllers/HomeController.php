@@ -434,7 +434,14 @@ class HomeController extends Controller
 
     public function add_user()
     {
-        return view('add_user');
+        if(Auth::user()->is_admin == 1)
+        {
+            return view('add_user');
+        }
+        else
+        {
+            return redirect('/')->with('danger', 'Sorry You do not have Admin Privileges!');
+        }
     }
 
     public function add_user_post(Request $request)
@@ -490,7 +497,8 @@ class HomeController extends Controller
     {
         $user_info = [
             'name' => $request->name,
-            'email' => $request->email
+            'email' => $request->email,
+            'is_admin' => $request->is_admin
         ];
         User::where('id', $id)->update($user_info);
         return back()->with('user-update-success', 'User updated!');
