@@ -52,7 +52,7 @@
                         <th class="bg-gray-200 px-4 py-2">No.</th>
                         <th class="bg-gray-200 px-4 py-2">Name</th>
                         <th class="bg-gray-200 px-4 py-2">Email</th>
-                        <th class="bg-gray-200 px-4 py-2">Admin Status</th>
+                        <th class="bg-gray-200 px-4 py-2">Status</th>
                         @if(Auth::user()->is_admin == 1)
                         <th class="bg-gray-200 px-4 py-2">Feedback Mail Status</th>
                         <th class="bg-gray-200 px-4 py-2">Action</th>
