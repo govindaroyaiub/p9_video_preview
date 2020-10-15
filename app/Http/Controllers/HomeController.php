@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user_list = User::get();
+        $user_list = User::orderBy('name', 'ASC')->get();
         $total_projects = MainProject::get()->count();
         $total_videos = SubProject::get()->count();
         $total_comments = Comments::get()->count();
