@@ -17,10 +17,12 @@ Route::get('/index', function()
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/user/delete/{id}', 'HomeController@delete_user')->name('delete_user');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/add', 'HomeController@add_user')->name('add_user');
 Route::post('/user/add', 'HomeController@add_user_post')->name('add_user_post');
+Route::get('/user/edit/{id}', 'HomeController@edit_user')->name('edit_user');
+Route::post('/user/edit/{id}', 'HomeController@edit_user_post')->name('edit_user_post');
+Route::get('/user/delete/{id}', 'HomeController@delete_user')->name('delete_user');
 Route::get('/change-password', 'HomeController@change_password')->name('change_password');
 Route::post('/change-password', 'HomeController@change_password_post')->name('change_password_post');
 Route::post('/change_mail_status', 'HomeController@change_mail_status')->name('change_mail_status');

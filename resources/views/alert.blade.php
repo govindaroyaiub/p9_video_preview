@@ -28,6 +28,20 @@
 </div>
 <br>
 @endif
+@if (session('user-update-success'))
+<div x-data="{ show: true }" x-show="show"
+    class="w2/3 flex justify-between items-center bg-green-200 relative text-white-600 py-3 px-3 rounded-lg">
+    <div>
+        <span class="font-semibold text-white-700">{{ session('user-update-success') }} </span>
+    </div>
+    <div>
+        <button type="button" @click="show = false" class="text-gray-900">
+            <span class="text-2xl">&times;</span>
+        </button>
+    </div>
+</div>
+<br>
+@endif
 @if (session('error'))
 <div x-data="{ show: true }" x-show="show"
     class="flex justify-between items-center bg-teal-200 relative text-teal-600 py-3 px-3 rounded-lg">

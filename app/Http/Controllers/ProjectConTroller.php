@@ -78,13 +78,8 @@ class ProjectConTroller extends Controller
             'id' => $project_id
         ];
 
-        $to = array(
-            'govinda@planetnine.com', 
-            'ebnsina@planetnine.com', 
-            'maarten@planetnine.com', 
-            'rohit@planetnine.com', 
-            'rubaiya@planetnine.com'
-        );
+        $user_list = User::where('is_send_mail', 1)->get()->toArray();
+        $to = array_column($user_list, 'email');
         // $to = array('govinda@planetnine.com');
 
         \Mail::to($to)->send(new SendMail($details));
