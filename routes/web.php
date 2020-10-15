@@ -23,6 +23,7 @@ Route::get('/user/add', 'HomeController@add_user')->name('add_user');
 Route::post('/user/add', 'HomeController@add_user_post')->name('add_user_post');
 Route::get('/change-password', 'HomeController@change_password')->name('change_password');
 Route::post('/change-password', 'HomeController@change_password_post')->name('change_password_post');
+Route::post('/change_mail_status', 'HomeController@change_mail_status')->name('change_mail_status');
 
 Route::get('/project', 'HomeController@project')->name('project');
 Route::get('/project/add', 'HomeController@project_add')->name('project_add');

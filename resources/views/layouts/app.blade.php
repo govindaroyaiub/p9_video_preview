@@ -114,9 +114,8 @@
 <main class="py-4">
     @yield('content')
 </main>
-
-
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -206,6 +205,42 @@ $('#show_password').click(function(e)
         $('#repeat_password').get(0).type = 'password';
     }
 });
+
+    $('.switch').change(function (e) {
+        var id = $(this).attr("id");
+        var _token = $('input[name="_token"]').val();
+        var switch_button = document.getElementsByClassName("switch");
+
+        if ($(this).is(":checked"))
+        {
+            var status = 1; //checked
+        }
+        else
+        {
+            var status = 0; //checked
+        }
+        $.ajax({
+            url: "{{route('change_mail_status')}}",
+            method: "POST",
+            data: 
+            {
+                id: id,
+                status: status,
+                _token
+            },
+            success: function (result) 
+            {
+                if(result == 'true')
+                {
+                    alert('Mail Feedback Enabled!');
+                }
+                else
+                {
+                    alert('Mail Feedback Disabled!')
+                }
+            }
+        })
+    });
 </script>
 
 

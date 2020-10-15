@@ -50,6 +50,7 @@
                         <th class="bg-gray-200 px-4 py-2">No.</th>
                         <th class="bg-gray-200 px-4 py-2">Name</th>
                         <th class="bg-gray-200 px-4 py-2">Email</th>
+                        <th class="bg-gray-200 px-4 py-2">Feedback Mail Status</th>
                         <th class="bg-gray-200 px-4 py-2">Action</th>
                     </tr>
                     </thead>
@@ -60,6 +61,9 @@
                             <td class="border px-4 py-2">{{$i++}}</td>
                             <td class="border px-4 py-2">{{ $user->name }}</td>
                             <td class="border px-4 py-2">{{ $user->email }}</td>
+                            <td class="border px-4 py-2">
+                                <input type="checkbox" class="switch" id="{{ $user->id }}" @if($user->is_send_mail == 1) checked @endif>
+                            </td>
                             <td class="border px-4 py-2">
                             <a href="/user/delete/{{$user->id}}">
                                 <button type="button"
