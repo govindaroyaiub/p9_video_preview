@@ -18,9 +18,14 @@
                     <input type='text' placeholder="Enter Company Name" name="company_name"
                            class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary"
                            required/>
-
-                    <input type="file" name="logo_file"
-                           class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary">
+                    
+                    <div>
+                        <label class="text-primary font-light block">Select Logo</label>
+                        <div class="drag-n-drop-area relative opacity-50 border border-dashed border-primary rounded-lg w-full">
+                            <input type="file" name="logo_file" class="drag-n-drop absolute mx-auto text-center" id="upload"/>
+                        </div>
+                    </div>
+                    <br>
 
                     <div class="flex space-x-4">
                         <button type="submit"

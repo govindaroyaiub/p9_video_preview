@@ -5,7 +5,7 @@
     <div class="container mx-auto px-4 pt-4">
         <div class="bg-white shadow-sm p-3 max-w-md mx-auto rounded-lg">
             <h3 class="text-2xl font-bold text-center mb-1">{{ __('Login') }}</h3>
-
+            @include('alert')
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 

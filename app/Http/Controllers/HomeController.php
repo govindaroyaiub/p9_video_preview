@@ -65,9 +65,10 @@ class HomeController extends Controller
 
     public function project_add_post(Request $request)
     {
+        $pro_name = $request->project_name;
         $project_name = str_replace(" ","_", $request->project_name);
         $main_project = new MainProject;
-        $main_project->name = $project_name;
+        $main_project->name = $pro_name;
         $main_project->client_name = $request->client_name;
         $main_project->logo_id = $request->logo_id;
         $main_project->color = $request->color;
@@ -123,11 +124,12 @@ class HomeController extends Controller
     public function project_edit_post(Request $request, $id)
     {
         $main_project_id = $id;
+        $pro_name = $request->project_name;
         $project_name = str_replace(" ","_", $request->project_name);
         $sub_projects = SubProject::where('project_id', $main_project_id)->get();
 
         $main_project_details = [
-            'name' => $project_name,
+            'name' => $pro_name,
             'client_name' => $request->client_name,
             'logo_id' => $request->logo_id,
             'color' => $request->color,
@@ -443,7 +445,7 @@ class HomeController extends Controller
         $user->password = Hash::make('password');
         $user->save();
 
-        return redirect('/home')->with('success', 'User: '.$request->name.' '.'Email: '.$request->email.' '.'Password: password, has been created!');
+        return redirect('/home')->with('create-user', 'User: '.$request->name.' '.'Email: '.$request->email.' '.'Password: password, has been created!');
     }
 
     public function change_password()
@@ -453,6 +455,34 @@ class HomeController extends Controller
 
     public function change_password_post(Request $request)
     {
-        dd(Auth::user()->id);
+        $user_id = Auth::user()->id;
+
+        $current_password = $request->current_password;
+        $new_password = $request->new_password;
+        $repeat_password = $request->repeat_password;
+
+        if (Hash::check($current_password, Auth::user()->password)) 
+        {
+            if($new_password == $repeat_password)
+            {
+                User::where('id', Auth::user()->id)->update(['password' => Hash::make($new_password)]);
+                Auth::logout();
+                return redirect('/login')->with('info-password', 'Password has been changed. Please login again. Thank you!');
+            }
+            else
+            {
+                return back()->with('danger', 'New Password and Repeat Password do not match! You high?');
+            }
+        }
+        else
+        {
+            return back()->with('info', 'Current Password is not matched! Are you high?');
+        }    
+    }
+
+    public function delete_user($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect('/')->with('delete-user', 'User has been deleted');
     }
 }

@@ -3,13 +3,13 @@
         <li class="{{ request()->is('/') ? 'bg-primary text-white rounded-lg' : '' }}"><a
                 class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/">Dashboard</a>
         </li>
-        <li class="{{ request()->is('project') ? 'bg-primary text-white rounded-lg' : '' }}"><a
+        <li class="{{ request()->is('project') || request()->is('project/*') ? 'bg-primary text-white rounded-lg' : '' }}"><a
                 class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/project">Projects</a>
         </li>
-        <li class="{{ request()->is('logo') ? 'bg-primary text-white rounded-lg' : '' }}"><a
+        <li class="{{ request()->is('logo') || request()->is('logo/*') ? 'bg-primary text-white rounded-lg' : '' }}"><a
                 class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/logo">Logos</a>
         </li>
-        <li class="{{ request()->is('sizes') ? 'bg-primary text-white rounded-lg' : '' }}"><a
+        <li class="{{ request()->is('sizes') || request()->is('sizes/*') ? 'bg-primary text-white rounded-lg' : '' }}"><a
                 class="rounded-lg hover:bg-primary hover:text-white px-3 py-2 block" href="/sizes">Sizes</a>
         </li>
     </ul>
