@@ -10,12 +10,7 @@ Route::get('/project/view/{id}', 'ProjectConTroller@project_view')->name('projec
 Route::get('/get_comments/{id}', 'ProjectConTroller@get_comments')->name('get_comments');
 Route::post('/store_comments/{id}', 'ProjectConTroller@store_comments')->name('store_comments');
 
-Route::get('/index', function()
-{
-    return view('index');
-});
-
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/add', 'HomeController@add_user')->name('add_user');

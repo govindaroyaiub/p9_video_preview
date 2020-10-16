@@ -300,8 +300,8 @@
                                     <div class="text-author">
                                         <h3 class="comment" style="text-decoration: underline; font-weight: bold;">Comment</h3>
                                         <br>
-                                        <h3 class="comment">{{ $details['comment'] }}</h3>
-                                        <p><a href="#" class="btn btn-primary">View</a></p>
+                                        <h3 class="comment">" {{ $details['comment'] }} "</h3>
+                                        <p><a href="http://video-preview.planetnine.com/project/view/{{ $details['id'] }}" target="_blank" class="btn btn-primary">View</a></p>
                                     </div>
                                 </td>
                             </tr>

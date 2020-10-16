@@ -172,48 +172,11 @@
     @foreach($sub_project_info as $project)
         <div class="container mx-auto px-4 py-10">
             <div class="flex -mx-8 mb-10">
-                <div class="w-3/4 mx-8">
-                    <div class="videos">
-                        <h2 class="text-xl font-semibold mb-4">
-                            {{ $project->title }}
-                        </h2>
-                        <div class="video-container aspect-ratio-16-9">
-                            <video class="video" playsinline controls data-poster="poster.jpg" @if($project->width >=
-                                1980) width="560" height="315" @elseif($project->width < 1980) width="560" height="100"
-                                @endif>
-                                <source src="{{ asset('/banner_videos/'.'/'.$project->video_path) }}"
-                                        type="video/mp4"/>
-                            </video>
-                        </div>
-
-                        <ul class="flex space-x-4">
-                            <li><a href="{{ asset('/banner_videos/'.'/'.$project->video_path) }}"
-                                   class="color-primary underline flex mt-4" download>Download Video
-                                    <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                                    </svg>
-                                </a></li>
-
-
-                            @if(Auth::user())
-                                <li><a href="/video/edit/{{ $project->id }}"
-                                       class="color-primary underline flex mt-4">Edit
-                                        <svg class="w-6 h-6 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                        </svg>
-                                    </a></li>
-                                <li><a href="/video/delete/{{ $project->id }}"
-                                       class="color-primary underline flex mt-4">Delete
-                                        <svg class="w-6 h-6 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                        </svg>
-                                    </a></li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
+                @if($project->width == 1920 && $project->height == 1080)
+                @include('1920_1080')
+                @elseif($project->width == 1080 && $project->height == 1080)
+                @include('1080_1080')
+                @endif
                 <div class="w-1/4 mx-8">
                     <h2 class="text-xl font-semibold mb-8" style="text-decoration: underline;">Specifications:</h2>
                     <table class="table w-full">
@@ -272,8 +235,6 @@
                 href="https://www.planetnine.com/" target="_blank" style="text-decoration: underline;">Planet Nine</a>
             - <?= Date('Y') ?></div>
     </footer>
-@else
-
 @endif
 <script src="{{ asset('/js/app.js') }}"></script>
 </body>
