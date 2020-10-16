@@ -7,6 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $main_project_info['name'] }}</title>
+    <link rel="shortcut icon" href="https://www.planetnine.com/wp-content/uploads/2020/06/cropped-favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <style>
