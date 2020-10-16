@@ -208,7 +208,7 @@
                     @if($project->poster_path != NULL)
                         <div class="mt-4">
                             <div class="companion-banner">
-                                <h2 class="text-xl font-semibold mb-4">{{ $project->size_name }}</h2>
+                                <h2 class="text-xl font-semibold mb-4">Companion Banner</h2>
 
                                 <img class="block" src="{{ asset('/poster_images/'.'/'.$project->poster_path) }}"
                                      alt="companion banner">
