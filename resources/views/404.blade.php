@@ -399,7 +399,7 @@
         }
 
     </style>
-    
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.20.0_d360d9a082ccc13b1a1a9b153f86b378_min.js"></script>
 </head>
 
 <body class="font-body">
@@ -530,6 +530,12 @@
         drawVisor();
         animate();
 
+    </script>
+    <script type="text/javascript">
+        var t1 = new TimelineMax({repeat: -1, repeatDelay: 1});    
+        t1
+        .to('.astronaut', 2, {y:-5, ease: Power2.easeOut}, '+=1')
+        .to('.astronaut', 2, {y:-150, ease: Power2.easeOut}, '+=.5')
     </script>
 </body>
 
