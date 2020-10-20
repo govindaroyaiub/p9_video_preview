@@ -175,8 +175,10 @@
             <div class="flex -mx-8 mb-10">
                 @if($project->width == 1920 && $project->height == 1080)
                 @include('1920_1080')
-                @elseif($project->width == 1080 && $project->height == 1080)
+                @elseif(($project->width == 1080 && $project->height == 1080) || ($project->width == 1280 && $project->height == 720))
                 @include('1080_1080')
+                @elseif($project->width == 720 && $project->height == 1280)
+                @include('720_1280')
                 @endif
                 <div class="w-1/4 mx-8">
                     <h2 class="text-xl font-semibold mb-8" style="text-decoration: underline;">Specifications:</h2>
