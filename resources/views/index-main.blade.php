@@ -186,7 +186,7 @@
                 @elseif($project->width == 720 && $project->height == 1280)
                     @include('720_1280')
                 @endif
-                <div class="w-1/4 mx-8">
+                <div class="md:w-1/4 mx-8">
                     <h2 class="text-xl font-semibold mb-8" style="text-decoration: underline;">Specifications:</h2>
                     <table class="table w-full">
                         <tbody>

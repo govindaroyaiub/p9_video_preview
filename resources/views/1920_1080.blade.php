@@ -1,4 +1,4 @@
-<div class="w-3/4 mx-8">
+<div class="md:w-3/4 mx-8">
     <div class="videos">
         <h2 class="text-xl font-semibold mb-4">
             {{ $project->title }}

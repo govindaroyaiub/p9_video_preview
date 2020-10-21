@@ -1,7 +1,7 @@
-<div class="w-3/4 mx-8">
+<div class="md:w-3/4 mx-8">
     <div class="videos">
-        <div class="flex">
-            <div class="w-2/4">
+        <div class="md:flex">
+            <div class="md:w-2/4">
             <h2 class="text-xl font-semibold mb-4">
             {{ $project->title }}
             </h2>
