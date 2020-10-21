@@ -223,15 +223,6 @@
                                      alt="companion banner">
 
                                 <div class="flex items-center space-x-4 mt-2">
-                                    <a href="{{ asset('/poster_images/'.'/'.$project->poster_path) }}"
-                                       class="color-primary underline flex"
-                                       download>Download Banner
-                                        <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                                        </svg>
-                                    </a>
                                     @if(mime_content_type(public_path('/poster_images/'.$project->poster_path)) == "image/gif")
                                     <a href="#"
                                        class="flex"
@@ -245,6 +236,15 @@
                                         </svg>
                                     </a>
                                     @endif
+                                    <a href="{{ asset('/poster_images/'.'/'.$project->poster_path) }}"
+                                       class="color-primary underline flex"
+                                       download>Download Banner
+                                        <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         </div>
