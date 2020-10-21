@@ -7,81 +7,86 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $main_project_info['name'] }}</title>
-    <link rel="shortcut icon" href="https://www.planetnine.com/wp-content/uploads/2020/06/cropped-favicon-32x32.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://www.planetnine.com/wp-content/uploads/2020/06/cropped-favicon-32x32.png"
+          type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <style>
         .loader {
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid #4c4f6d;
-        width: 80px;
-        height: 80px;
-        -webkit-animation: spin 2s linear infinite;
-        animation: spin 2s linear infinite;
-        margin: 0 auto!important;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #4c4f6d;
+            width: 80px;
+            height: 80px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            margin: 0 auto !important;
         }
 
         @-webkit-keyframes spin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
         }
 
         @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-        function list_comments()
-        {
+        function list_comments() {
             $(".loader").hide();
             $.ajax({
-                url: '/get_comments/'+{{ $main_project_id }},
+                url: '/get_comments/' +{{ $main_project_id }},
                 type: 'get',
-                success: function(result)
-                {
-                    if(result)
-                    {
+                success: function (result) {
+                    if (result) {
                         $("#not_needed").css("display", "none");
                         $('.comment_listing').html(result);
                     }
                 }
             })
         }
-        $(function(){
+
+        $(function () {
             list_comments();
-            setInterval(function()
-            {
+            setInterval(function () {
                 list_comments();
             }, 6000);
-            $('.submit').click(function(){
+            $('.submit').click(function () {
                 var comment = $('.comment').val();
                 show_loader();
                 $.ajax({
-                    url: '/store_comments/'+{{ $main_project_id }},
+                    url: '/store_comments/' +{{ $main_project_id }},
                     data: {
                         comment: comment,
                         _token: '{{csrf_token()}}'
                     },
                     type: 'post',
-                    success: function()
-                    {
+                    success: function () {
                         $('.comment').val('').change();
                         list_comments();
                     }
                 })
             })
         })
-        function show_loader() 
-        {
+
+        function show_loader() {
             $("#comment_button").hide();
             setTimeout(hide_loader, 4500);
             $(".loader").show();
         }
-        function hide_loader()
-        {
+
+        function hide_loader() {
             $(".loader").hide();
             $("#comment_button").show();
         }
@@ -119,11 +124,11 @@
                               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <div x-show="commentModal" @click.away="commentModal = false"
-                        class="h-screen bg-white shadow absolute top-0 right-0 w-64 p-4 rounded-lg" id="comment_modal">
+                         class="h-screen bg-white shadow absolute top-0 right-0 w-64 p-4 rounded-lg" id="comment_modal">
                         <svg class="w-8 h-8 text-red-400 font-semibold" @click="commentModal = false" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
 
                         <div id="not_needed">
@@ -132,19 +137,20 @@
                         <div>
                             <p class="my-4" style="text-decoration: underline;">Comments:</p>
                             <div class="comment_listing">
-                        </div>
-                        <textarea name="comment_content" id="comment" cols="5" rows="5"
-                            class="comment w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
+                            </div>
+                            <textarea name="comment_content" id="comment" cols="5" rows="5"
+                                      class="comment w-full border border-gray-600 focus:outline-none rounded-lg"></textarea>
                             <br>
-                        <a href="javascript:void(0)" id="comment_button" class="submit bg-primary px-20 py-2 rounded-lg w-full text-white mt-2">Comment
-                        </a>
-                        <br>
-                        <div class="loader"></div>
+                            <a href="javascript:void(0)" id="comment_button"
+                               class="submit bg-primary px-20 py-2 rounded-lg w-full text-white mt-2">Comment
+                            </a>
+                            <br>
+                            <div class="loader"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </header>
 
 <div class="container mx-auto px-4 py-2">
@@ -172,13 +178,13 @@
 <main class="main">
     @foreach($sub_project_info as $project)
         <div class="container mx-auto px-4 py-10">
-            <div class="flex -mx-8 mb-10">
+            <div class="md:flex -mx-8 mb-10">
                 @if($project->width == 1920 && $project->height == 1080)
-                @include('1920_1080')
+                    @include('1920_1080')
                 @elseif(($project->width == 1080 && $project->height == 1080) || ($project->width == 1280 && $project->height == 720))
-                @include('1080_1080')
+                    @include('1080_1080')
                 @elseif($project->width == 720 && $project->height == 1280)
-                @include('720_1280')
+                    @include('720_1280')
                 @endif
                 <div class="w-1/4 mx-8">
                     <h2 class="text-xl font-semibold mb-8" style="text-decoration: underline;">Specifications:</h2>

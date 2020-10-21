@@ -53,3 +53,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+.sidebar {
+    min-height: 87vh;
+}
+
+@media screen and (max-width: 576px) {
+    .sidebar {
+        min-height: auto;
+    }
+
+    .dropdown {
+        width: 60%;
+        right: 0;
+    }
+}

@@ -10,7 +10,7 @@
 
     <div class="flex -mx-4">
         @include('sidebar')
-        <div class="w-3/4 mx-4">
+        <div class="md:w-3/4 mx-4">
             @include('alert')
             <br>
             <div class="flex justify-between w-full">
@@ -56,7 +56,7 @@
                                     </svg>
                                 </button>
                             </a>
-                            
+
                             <a href="/project/delete/{{$project->id}}">
                                 <button type="button"
                                     class="bg-red-500 text-gray-200 rounded hover:bg-red-400 px-4 py-2 focus:outline-none">

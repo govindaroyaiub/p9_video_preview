@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv='cache-control' content='no-cache'> 
-    <meta http-equiv='expires' content='0'> 
-    <meta http-equiv='pragma' content='no-cache'> 
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <title>P9 Video</title>
     <link rel="shortcut icon" href="https://www.planetnine.com/wp-content/uploads/2020/06/cropped-favicon-32x32.png" type="image/x-icon">
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
@@ -93,7 +93,7 @@
 
                     <button @click="logout = true" class="focus:outline-none">{{ Auth::user()->name }}</button>
 
-                    <div class="absolute bg-white shadow-md rounded-lg p-6" x-show="logout"
+                    <div class="dropdown absolute bg-white shadow-md rounded-lg p-6" x-show="logout"
                          @click.away="logout = false">
                         <a href="/change-password">
                             Change Password
@@ -199,8 +199,8 @@ $('#show_password').click(function(e)
             $('#new_password').get(0).type = 'text';
             $('#repeat_password').get(0).type = 'text';
         }
-    } 
-    else 
+    }
+    else
     {
         $('#current_password').get(0).type = 'password';
         $('#new_password').get(0).type = 'password';
@@ -224,13 +224,13 @@ $('#show_password').click(function(e)
         $.ajax({
             url: "{{route('change_mail_status')}}",
             method: "POST",
-            data: 
+            data:
             {
                 id: id,
                 status: status,
                 _token
             },
-            success: function (result) 
+            success: function (result)
             {
                 if(result == 'true')
                 {
