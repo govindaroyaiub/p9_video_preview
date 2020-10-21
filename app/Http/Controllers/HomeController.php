@@ -449,6 +449,7 @@ class HomeController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->is_admin = $request->is_admin;
         $user->password = Hash::make('password');
         $user->save();
 
