@@ -7,6 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $main_project_info['name'] }}</title>
+    <link rel="shortcut icon" href="https://www.planetnine.com/wp-content/uploads/2020/06/cropped-favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <style>
@@ -174,8 +175,10 @@
             <div class="flex -mx-8 mb-10">
                 @if($project->width == 1920 && $project->height == 1080)
                 @include('1920_1080')
-                @elseif($project->width == 1080 && $project->height == 1080)
+                @elseif(($project->width == 1080 && $project->height == 1080) || ($project->width == 1280 && $project->height == 720))
                 @include('1080_1080')
+                @elseif($project->width == 720 && $project->height == 1280)
+                @include('720_1280')
                 @endif
                 <div class="w-1/4 mx-8">
                     <h2 class="text-xl font-semibold mb-8" style="text-decoration: underline;">Specifications:</h2>
@@ -207,7 +210,7 @@
                     @if($project->poster_path != NULL)
                         <div class="mt-4">
                             <div class="companion-banner">
-                                <h2 class="text-xl font-semibold mb-4">{{ $project->size_name }}</h2>
+                                <h2 class="text-xl font-semibold mb-4">Companion Banner</h2>
 
                                 <img class="block" src="{{ asset('/poster_images/'.'/'.$project->poster_path) }}"
                                      alt="companion banner">
