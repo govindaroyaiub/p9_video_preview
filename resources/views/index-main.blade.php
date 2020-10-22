@@ -40,6 +40,11 @@
                 transform: rotate(360deg);
             }
         }
+
+        .logo-main {
+          width: 200px;
+          height: 45px;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -104,7 +109,7 @@
         <div class="flex">
             @if($main_project_info->is_logo == 1)
                 <img src="{{ asset('/logo_images/'.'/'.$main_project_info->path) }}"
-                     alt="{{ $main_project_info['client_name'] }}" class="w-32 flex-none mr-4"/>
+                     alt="{{ $main_project_info['client_name'] }}" class="logo-main mr-4"/>
             @else
 
             @endif
