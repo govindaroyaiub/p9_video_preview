@@ -43,10 +43,18 @@ class HomeController extends Controller
             $size_text = $video->size;
             $size_number = trim($size_text," MB");
 
-            array_push($total_size, intval($size_number));
+            array_push($total_size, floatval($size_number));
         }
 
-        $total_number = array_sum($total_size);
+        $total_size = array_sum($total_size);
+        if($total_size <= 1024)
+        {
+            $total_number = round($total_size, 2).' MB';
+        }
+        if($total_size > 1024 && $total_size <= 2048)
+        {
+            $total_number = round($total_size/1024,2).' GB';
+        }
         return view('home', compact('user_list', 'total_projects', 'total_videos', 'total_comments', 'total_number'));
     }
 

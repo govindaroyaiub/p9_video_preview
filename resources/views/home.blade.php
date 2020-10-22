@@ -12,9 +12,7 @@
             @include('sidebar')
             <div class="md:w-3/4 mx-4">
                 @include('alert')
-                <h3 class="text-xl font-semibold tracking-wide mt-4 md:mt-0">{{ __('Dashboard') }}</h3>
-
-                <div class="md:grid grid-cols-3 gap-8 mt-4">
+                <div class="md:grid grid-cols-4 gap-8 mt-4">
                     <div class="mb-4 md:mb-0 bg-blue-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Projects</h3>
                         <h2 class="text-blue-800 text-3xl font-bold">{{ $total_projects }}</h2>
@@ -22,19 +20,18 @@
                     <div class="mb-4 md:mb-0 bg-green-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Videos</h3>
                         <h2 class="text-green-800 text-3xl font-bold">{{ $total_videos }}</h2>
-                        <hr>
+                    </div>
+                    <div class="mb-4 md:mb-0 bg-purple-600 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Video Space</h3>
-                        <h2 class="text-blue-800 text-3xl font-bold">{{ $total_number }} MB</h2>
+                        <h2 class="text-blue-800 text-3xl font-bold">{{ $total_number }}</h2>
                     </div>
                     <div class="mb-4 md:mb-0 bg-red-400 p-2 rounded-lg text-center shadow-sm">
                         <h3 class="text-gray-800 text-2xl">Total Comments</h3>
                         <h2 class="text-red-800 text-3xl font-bold">{{ $total_comments }}</h2>
                     </div>
                 </div>
-
                 <br>
                 <br>
-
                 <div class="flex justify-between w-full">
                     <h3 class="text-xl font-semibold tracking-wide">Users</h3>
                     @if(Auth::user()->is_admin == 1)
