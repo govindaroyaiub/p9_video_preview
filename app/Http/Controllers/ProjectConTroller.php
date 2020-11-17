@@ -49,7 +49,7 @@ class ProjectConTroller extends Controller
                                             )
                                             ->where('project_id', $main_project_id)
                                             ->orderBy('sizes.width', 'DESC')
-                                            ->get();                                   
+                                            ->get();             
 
             $comments = Comments::where('project_id', $main_project_id)->orderBy('created_at', 'DESC')->get();
             $comments_count = Comments::where('project_id', $main_project_id)->get()->count();
@@ -66,8 +66,6 @@ class ProjectConTroller extends Controller
         {
             return view('404');
         }
-
-        
     }
 
     public function store_comments(Request $request, $id)
