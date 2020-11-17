@@ -1,3 +1,6 @@
+<?php $direct_name = "banner_videos/" ?>
+
+@if (glob($direct_name.$project->video_path))
 <div class="md:w-3/4 mx-8">
     <div class="videos">
         <div class="md:flex">
@@ -42,3 +45,12 @@
         </div>
     </div>
 </div>
+@else
+<div class="md:w-3/4 mx-8">
+    <div class="videos">
+        <h2 class="text-xl font-semibold mb-4" style="color: red;">
+            Video not found!
+        </h2>
+    </div>
+</div>
+@endif
