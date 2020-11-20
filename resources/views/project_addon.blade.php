@@ -34,8 +34,6 @@
                 <div class="flex mb-4">
                     <input type='text' placeholder="Enter Frame Per Second" name="fps"
                         class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
-                    <input type='text' placeholder="Enter Video Size" name="size"
-                        class="w-1/3 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-primary" required/>
                 </div>
 
                 <div>

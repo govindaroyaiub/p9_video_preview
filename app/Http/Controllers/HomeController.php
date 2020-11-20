@@ -80,15 +80,7 @@ class HomeController extends Controller
 
         $pro_name = $request->project_name;
         $project_name = str_replace(" ","_", $request->project_name);
-        $main_project = new MainProject;
-        $main_project->name = $pro_name;
-        $main_project->client_name = $request->client_name;
-        $main_project->logo_id = $request->logo_id;
-        $main_project->color = $request->color;
-        $main_project->is_logo = 1;
-        $main_project->is_footer = 1;
-        $main_project->save();
-
+        
         $size_info = Sizes::where('id', $request->size_id)->first();
         $sub_project_name = $project_name.'_'.$size_info['width'].'x'.$size_info['height'];
 
@@ -104,6 +96,20 @@ class HomeController extends Controller
 
         $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
         $request->video->move(public_path('banner_videos'), $video_name);
+        $video_bytes = filesize(public_path('/banner_videos/'.$video_name));
+
+        $label = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
+        for( $i = 0; $video_bytes >= 1024 && $i < ( count( $label ) -1 ); $video_bytes /= 1024, $i++ );
+        $video_size = round( $video_bytes, 2 ) . " " . $label[$i];
+
+        $main_project = new MainProject;
+        $main_project->name = $pro_name;
+        $main_project->client_name = $request->client_name;
+        $main_project->logo_id = $request->logo_id;
+        $main_project->color = $request->color;
+        $main_project->is_logo = 1;
+        $main_project->is_footer = 1;
+        $main_project->save();
 
         $sub_project = new SubProject;
         $sub_project->name = $sub_project_name;
@@ -113,7 +119,7 @@ class HomeController extends Controller
         $sub_project->codec = $request->codec;
         $sub_project->aspect_ratio = $request->aspect_ratio;
         $sub_project->fps = $request->fps;
-        $sub_project->size = $request->size;
+        $sub_project->size = $video_size;
         $sub_project->poster_path = $poster_name;
         $sub_project->video_path = $video_name;
         $sub_project->save();
@@ -220,6 +226,11 @@ class HomeController extends Controller
 
         $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
         $request->video->move(public_path('banner_videos'), $video_name);
+        $video_bytes = filesize(public_path('/banner_videos/'.$video_name));
+
+        $label = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
+        for( $i = 0; $video_bytes >= 1024 && $i < ( count( $label ) -1 ); $video_bytes /= 1024, $i++ );
+        $video_size = round( $video_bytes, 2 ) . " " . $label[$i];
 
         $sub_project = new SubProject;
         $sub_project->name = $sub_project_name;
@@ -229,7 +240,7 @@ class HomeController extends Controller
         $sub_project->codec = $request->codec;
         $sub_project->aspect_ratio = $request->aspect_ratio;
         $sub_project->fps = $request->fps;
-        $sub_project->size = $request->size;
+        $sub_project->size = $video_size;
         $sub_project->poster_path = $poster_name;
         $sub_project->video_path = $video_name;
         $sub_project->save();
@@ -282,6 +293,11 @@ class HomeController extends Controller
             }
             $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
             $request->video->move(public_path('banner_videos'), $video_name);
+            $video_bytes = filesize(public_path('/banner_videos/'.$video_name));
+
+            $label = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
+            for( $i = 0; $video_bytes >= 1024 && $i < ( count( $label ) -1 ); $video_bytes /= 1024, $i++ );
+            $video_size = round( $video_bytes, 2 ) . " " . $label[$i];
         }
         else if($request->poster == NULL && $request->video != NULL)
         {
@@ -292,6 +308,11 @@ class HomeController extends Controller
             }
             $video_name = $sub_project_name.'_'.time().'.'.$request->video->extension();
             $request->video->move(public_path('banner_videos'), $video_name);
+            $video_bytes = filesize(public_path('/banner_videos/'.$video_name));
+
+            $label = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
+            for( $i = 0; $video_bytes >= 1024 && $i < ( count( $label ) -1 ); $video_bytes /= 1024, $i++ );
+            $video_size = round( $video_bytes, 2 ) . " " . $label[$i];
         }
         else if($request->poster != NULL && $request->video == NULL)
         {
@@ -325,7 +346,7 @@ class HomeController extends Controller
             'size_id' => $request->size_id,
             'aspect_ratio' => $request->aspect_ratio,
             'fps' => $request->fps,
-            'size' => $request->size,
+            'size' => $video_size,
             'poster_path' => $poster_name,
             'video_path' => $video_name
         ];
@@ -374,11 +395,9 @@ class HomeController extends Controller
             if (file_exists($video_path)) {
                 @unlink($video_path);
             }
-
             SubProject::where('id', $sub_project->id)->delete();
         }
         MainProject::where('id', $id)->delete();
-
         return redirect('/project')->with('danger', $main_project_info['name'].' been deleted along with assets!');
     }
 
