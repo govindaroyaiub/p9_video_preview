@@ -73,6 +73,11 @@ class HomeController extends Controller
 
     public function project_add_post(Request $request)
     {
+        $validator = $request->validate([
+            'poster' => 'mimes:jpeg,png,jpg,gif',
+            'video' => 'required|mimes:mp4',
+        ]);
+
         $pro_name = $request->project_name;
         $project_name = str_replace(" ","_", $request->project_name);
         $main_project = new MainProject;
@@ -83,11 +88,6 @@ class HomeController extends Controller
         $main_project->is_logo = 1;
         $main_project->is_footer = 1;
         $main_project->save();
-
-        $request->validate([
-            'poster' => 'image|mimes:jpeg,png,jpg,gif,svg',
-            'video' => 'required',
-        ]);
 
         $size_info = Sizes::where('id', $request->size_id)->first();
         $sub_project_name = $project_name.'_'.$size_info['width'].'x'.$size_info['height'];
@@ -131,6 +131,11 @@ class HomeController extends Controller
 
     public function project_edit_post(Request $request, $id)
     {
+        $validator = $request->validate([
+            'poster' => 'mimes:jpeg,png,jpg,gif',
+            'video' => 'required|mimes:mp4',
+        ]);
+
         $main_project_id = $id;
         $pro_name = $request->project_name;
         $project_name = str_replace(" ","_", $request->project_name);
@@ -193,15 +198,15 @@ class HomeController extends Controller
 
     public function project_addon_post(Request $request, $id)
     {
+        $validator = $request->validate([
+            'poster' => 'mimes:jpeg,png,jpg,gif',
+            'video' => 'required|mimes:mp4',
+        ]);
+
         $main_project_id = $id;
         $project_info = MainProject::where('id', $main_project_id)->first();
         $size_info = Sizes::where('id', $request->size_id)->first();
         $sub_project_name = $project_info['name'].'_'.$size_info['width'].'x'.$size_info['height'];
-
-        $request->validate([
-            'poster' => 'image|mimes:jpeg,png,jpg,gif,svg',
-            'video' => 'required',
-        ]);
 
         if($request->has('poster'))
         {
@@ -242,6 +247,11 @@ class HomeController extends Controller
 
     public function video_edit_post(Request $request, $id)
     {
+        $validator = $request->validate([
+            'poster' => 'mimes:jpeg,png,jpg,gif',
+            'video' => 'mimes:mp4',
+        ]);
+
         $sub_project_id = $id;
         $sub_project_info = SubProject::where('id', $id)->first();
         $size_info = Sizes::where('id', $request->size_id)->first();
@@ -312,6 +322,7 @@ class HomeController extends Controller
             'name' => $sub_project_name,
             'title' => $request->title,
             'codec' => $request->codec,
+            'size_id' => $request->size_id,
             'aspect_ratio' => $request->aspect_ratio,
             'fps' => $request->fps,
             'size' => $request->size,

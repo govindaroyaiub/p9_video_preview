@@ -10,13 +10,13 @@
             </h2>
             <div class="video-container aspect-ratio-1-1">
                 <video class="video" playsinline controls data-poster="poster.jpg" width="315" height="560">
-                    <source src="{{ asset('/banner_videos/'.'/'.$project->video_path) }}"
+                    <source src="{{ asset('/banner_videos/'.$project->video_path) }}"
                             type="video/mp4"/>
                 </video>
             </div>
 
             <ul class="flex space-x-4">
-                <li><a href="{{ asset('/banner_videos/'.'/'.$project->video_path) }}"
+                <li><a href="{{ asset('/banner_videos/'.$project->video_path) }}"
                     class="color-primary underline flex mt-4" download>Download Video
                         <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">

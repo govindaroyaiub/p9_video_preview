@@ -1,17 +1,21 @@
 @if ($errors->any())
-<div x-data="{ show: true }" x-show="show"
-    class="flex justify-between items-center bg-red-200 relative text-white-600 py-3 px-3 rounded-lg">
-    @foreach ($errors->all() as $error)
-    <div>
-        <span class="font-semibold text-white-700">{{ $error }}</span>
+<div x-data="{show:true}" x-show="show" class="bg-white my-2 rounded-r-md px-6 border-l-4 -ml-4 border-gray-100 bg-yellow-400">
+    <div class="flex items-center py-4">
+        <i class="fas fa-exclamation-circle rounded-full fill-current text-4xl text-gray-800"></i>
+        <div class="flex-1 ml-5">
+           <h1 class="font-bold text-gray-800">Warning !!!</h1>
+           <?php $i=1; ?>
+           @foreach ($errors->all() as $error)
+                <p class="text-gray-800 font-semibold">{{$i++}}. {{$error}}</p>
+           @endforeach
+        </div>
+        <div>
+            <button @click="show=false" type="button" class=" text-yellow-100">
+                <span class="text-2xl text-gray-800">×</span>
+            </button>
+        </div>
     </div>
-    <div>
-        <button type="button" @click="show = false" class="text-gray-900">
-            <span class="text-2xl">&times;</span>
-        </button>
-    </div>
-    @endforeach
-</div>
+  </div>
 <br>
 @endif
 @if (session('success'))

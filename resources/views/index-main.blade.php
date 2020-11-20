@@ -228,7 +228,7 @@
                                 <h2 class="text-xl font-semibold mb-4">Companion Banner</h2>
 
                                 <img class="block companion-img"
-                                    src="{{ asset('/poster_images/'.'/'.$project->poster_path) }}"
+                                    src="{{ asset('/poster_images/'.$project->poster_path) }}"
                                     alt="companion banner">
 
                                 <div class="flex items-center space-x-4 mt-2">

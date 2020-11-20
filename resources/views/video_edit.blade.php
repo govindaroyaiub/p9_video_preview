@@ -2,15 +2,10 @@
 
 @section('content')
 <div class="container mx-auto px-4">
-    @if (session('status'))
-    <div class="bg-green-400 text-gray-900 px-2 py-1 rounded-lg" role="alert">
-        {{ session('status') }}
-    </div>
-    @endif
-
     <div class="flex -mx-4">
         @include('sidebar')
         <div class="w-3/4 mx-4">
+            @include('alert')
             <h3 class="text-xl font-semibold tracking-wide">Edit Video</h3>
             <h3 class="text-xl font-semibold tracking-wide text-red-500">Just Edit What You Need to Edit Or Replace The Assets</h3>
             <br>

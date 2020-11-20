@@ -3,16 +3,10 @@
 
 @section('content')
     <div class="container mx-auto px-4">
-        @if (session('status'))
-            <div class="bg-green-400 text-gray-900 px-2 py-1 rounded-lg" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
         <div class="flex -mx-4">
             @include('sidebar')
-
             <div class="w-3/5 mx-4">
+                @include('alert')
                 <h3 class="text-xl font-semibold tracking-wide mb-4">Add Project</h3>
 
                 <form id="project-add-form" class="max-w-xl" method="POST" action="/project/add"
@@ -113,7 +107,7 @@
                     <div>
                         <label class="text-primary font-light block">Select Banner Video</label>
                         <div class="drag-n-drop-area relative opacity-50 border border-dashed border-primary rounded-lg w-full">
-                            <input type="file" name="video" class="drag-n-drop absolute mx-auto text-center" id="upload"/>
+                            <input type="file" name="video" class="drag-n-drop absolute mx-auto text-center" required id="upload"/>
                         </div>
                     </div>
 
