@@ -337,6 +337,7 @@ class HomeController extends Controller
         {
             $poster_name = $sub_project_info['poster_path'];
             $video_name = $sub_project_info['video_path'];
+            $video_size = $sub_project_info['size'];
         }
 
         $sub_project_details = [
