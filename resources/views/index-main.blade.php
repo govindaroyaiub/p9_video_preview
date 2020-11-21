@@ -93,7 +93,7 @@
         function get_color() {
             setInterval(function () {
                 list_comments();
-            }, 6000);
+            }, 3000);
             $.ajax({
                 url: '/get_colors/' +{{ $main_project_id }},
                 type: 'get',
