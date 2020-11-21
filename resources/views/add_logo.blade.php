@@ -2,17 +2,11 @@
 
 @section('content')
     <div class="container mx-auto px-4">
-        @if (session('status'))
-            <div class="bg-green-400 text-gray-900 px-2 py-1 rounded-lg" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
         <div class="flex -mx-4">
             @include('sidebar')
             <div class="w-3/4 mx-4">
                 <h3 class="text-xl font-semibold tracking-wide">Add Logo</h3>
-
+                @include('alert')
                 <form class="max-w-lg" method="POST" action="/logo/add" enctype="multipart/form-data">
                     @csrf
                     <input type='text' placeholder="Enter Company Name" name="company_name"
@@ -22,7 +16,7 @@
                     <div>
                         <label class="text-primary font-light block">Select Logo</label>
                         <div class="drag-n-drop-area relative opacity-50 border border-dashed border-primary rounded-lg w-full">
-                            <input type="file" name="logo_file" class="drag-n-drop absolute mx-auto text-center" id="upload"/>
+                            <input type="file" name="logo_file" class="drag-n-drop absolute mx-auto text-center" required id="upload"/>
                         </div>
                     </div>
                     <br>

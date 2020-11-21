@@ -416,7 +416,7 @@ class HomeController extends Controller
     public function logo_add_post(Request $request)
     {
         $request->validate([
-            'logo_file' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'logo_file' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         $imageName = $request->company_name.'_'.time().'.'.$request->logo_file->extension();
