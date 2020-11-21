@@ -45,6 +45,22 @@
           width: 200px;
           height: 45px;
         }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 9px 13px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button1 {background-color: #fc0341;}
+        .button2 {background-color: #03befc;}
+        .button3 {background-color: #fc6203;}
+        .button4 {background-color: #4c4f6d;}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -61,6 +77,137 @@
                 }
             })
         }
+
+        function rgb2hex(rgb) {
+            if (  rgb.search("rgb") == -1 ) {
+                return rgb;
+            } else {
+                rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+                function hex(x) {
+                    return ("0" + parseInt(x).toString(16)).slice(-2);
+                }
+                return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
+            }
+        }
+
+        function get_color() {
+            setInterval(function () {
+                list_comments();
+            }, 6000);
+            $.ajax({
+                url: '/get_colors/' +{{ $main_project_id }},
+                type: 'get',
+                success: function (result) {
+                    if(result)
+                    {
+                        $('.header').css({"borderColor": result});
+                        $('.footer').css({"backgroundColor": result});
+                    }
+                }
+            })
+        }
+        
+        $(document).ready(function(){
+            $("#b1").click(function()
+            {
+                $(this).data('clicked', true);
+                var color_rgb = $( this ).css( "background-color" );
+                var color = rgb2hex(color_rgb);
+                $.ajax({
+                    url: '/set_color/' +{{ $main_project_id }},
+                    data: {
+                        color: color,
+                        _token: '{{csrf_token()}}'
+                    },
+                    type: 'post',
+                    success: function (result) {
+                        if(result)
+                        {
+                            get_color();
+                        }
+                        else
+                        {
+                            alert('Something is Wrong!');
+                        }
+                    }
+                })
+            });
+
+            $("#b2").click(function()
+            {
+                $(this).data('clicked', true);
+                var color_rgb = $( this ).css( "background-color" );
+                var color = rgb2hex(color_rgb);
+                $.ajax({
+                    url: '/set_color/' +{{ $main_project_id }},
+                    data: {
+                        color: color,
+                        _token: '{{csrf_token()}}'
+                    },
+                    type: 'post',
+                    success: function (result) {
+                        if(result)
+                        {
+                            get_color();
+                        }
+                        else
+                        {
+                            alert('Something is Wrong!');
+                        }
+                    }
+                })
+            });
+
+            $("#b3").click(function()
+            {
+                $(this).data('clicked', true);
+                var color_rgb = $( this ).css( "background-color" );
+                var color = rgb2hex(color_rgb);
+                $.ajax({
+                    url: '/set_color/' +{{ $main_project_id }},
+                    data: {
+                        color: color,
+                        _token: '{{csrf_token()}}'
+                    },
+                    type: 'post',
+                    success: function (result) {
+                        if(result)
+                        {
+                            get_color();
+                        }
+                        else
+                        {
+                            alert('Something is Wrong!');
+                        }
+                    }
+                })
+            });
+
+            $("#b4").click(function()
+            {
+                $(this).data('clicked', true);
+                var color_rgb = $( this ).css( "background-color" );
+                var color = rgb2hex(color_rgb);
+                $.ajax({
+                    url: '/set_color/' +{{ $main_project_id }},
+                    data: {
+                        color: color,
+                        _token: '{{csrf_token()}}'
+                    },
+                    type: 'post',
+                    success: function (result) {
+                        if(result)
+                        {
+                            get_color();
+                        }
+                        else
+                        {
+                            alert('Something is Wrong!');
+                        }
+                    }
+                })
+            });
+        });
 
         $(function () {
             list_comments();
@@ -157,6 +304,13 @@
             </div>
         </div>
 </header>
+
+<div class="container mx-auto px-4 py-2">
+    <button class="button button1" id="b1"></button>
+    <button class="button button2" id="b2"></button>
+    <button class="button button3" id="b3"></button>
+    <button class="button button4" id="b4"></button>
+</div>
 
 <div class="container mx-auto px-4 py-2">
     @if(Auth::user())

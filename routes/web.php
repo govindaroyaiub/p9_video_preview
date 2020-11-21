@@ -8,6 +8,8 @@ Route::get('/', function () {
 
 Route::get('/project/view/{id}', 'ProjectConTroller@project_view')->name('project_view');
 Route::get('/get_comments/{id}', 'ProjectConTroller@get_comments')->name('get_comments');
+Route::get('/get_colors/{id}', 'ProjectConTroller@get_colors')->name('get_colors');
+Route::post('/set_color/{id}', 'ProjectConTroller@set_color')->name('set_color');
 Route::post('/store_comments/{id}', 'ProjectConTroller@store_comments')->name('store_comments');
 
 Auth::routes(['register' => false]);
