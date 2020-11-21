@@ -57,7 +57,7 @@
             cursor: pointer;
         }
 
-        .button1 {background-color: #fc0341;}
+        .button1 {background-color: red;}
         .button2 {background-color: #03befc;}
         .button3 {background-color: #fc6203;}
         .button4 {background-color: #4c4f6d;}
